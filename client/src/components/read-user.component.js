@@ -9,7 +9,7 @@ const User = props => (
         <td>{props.user.user_password}</td>
         <td>{props.user.user_name}</td>
         <td>{props.user.user_role}</td>
-        <td>{props.user.user_projects}</td>
+        {/* <td>{props.user.user_projects}</td> */}
         <td>{props.user.user_permissions}</td>
         <td>
             <Link to={"/users/edit/"+props.user._id}>Edit </Link>
@@ -18,10 +18,8 @@ const User = props => (
     </tr>
 )
 
-
-
 class ReadUser extends Component {
-   
+    _isMounted = true;
     constructor(props) {
         super(props);
         this.deleteUser = this.deleteUser.bind(this);
@@ -33,6 +31,7 @@ class ReadUser extends Component {
 
 
     componentDidMount() {
+        this._isMounted = true;
         axios.get('http://localhost:5000/users/')
         .then(res => {
             this.setState({users: res.data})
@@ -86,7 +85,7 @@ class ReadUser extends Component {
                             <th>Password</th>
                             <th>Name</th>
                             <th>Role</th>
-                            <th>Projects</th>
+                            {/* <th>Projects</th> */}
                             <th>Permissions</th>
                             <th>Actions</th>
                         </tr>

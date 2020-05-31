@@ -5,6 +5,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col'
 
 class EditUser extends Component {
+    _isMounted = true;
 
     constructor(props) {
         super(props);
@@ -27,6 +28,7 @@ class EditUser extends Component {
     }
 
     componentDidMount() {
+        this._isMounted = true;
         axios.get('http://localhost:5000/users/'+this.props.match.params.id)
         .then(res => {
             this.setState({
