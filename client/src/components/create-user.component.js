@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col'
+import axios from 'axios';
 
 class CreateUser extends Component {
     constructor(props) {
@@ -19,7 +20,7 @@ class CreateUser extends Component {
             user_password: '',
             user_name: '',
             user_role: '',
-            user_projects: [{name: 'Irys', id: 1},{name: 'Krokus', id: 2},{name: 'Dalia', id: 3}],
+            user_projects: [],
             user_permissions: '',
         }
     }
@@ -70,6 +71,19 @@ class CreateUser extends Component {
         console.log(`User Projects: ${this.state.user_projects}`);
         console.log(`User Permissions: ${this.state.user_permissions}`);
 
+        const newUser = {
+            user_login: this.state.user_login,
+            user_password: this.state.user_password,
+            user_name: this.state.user_name,
+            user_role: this.state.user_role,
+            user_projects: this.state.user_projects,
+            user_permissions: this.state.user_permissions,
+        }
+
+        axios.post('http://localhost:5000/users/create', newUser)
+        .then(res => console.log(res.data));
+
+        this.props.history.push('/users');
 
         this.setState({
             user_login: '',

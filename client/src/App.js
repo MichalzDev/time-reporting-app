@@ -22,13 +22,13 @@ class App extends Component {
               <NavDropdown title="Users" id="basic-nav-dropdown">
                 <NavDropdown.Item><Link to='/users'>Users</Link></NavDropdown.Item>
                 <NavDropdown.Item><Link to='/users/create'>Create User</Link></NavDropdown.Item>
-                <NavDropdown.Item><Link to='/users/edit:id'>EditUser</Link></NavDropdown.Item>
+                <NavDropdown.Item><Link to='/users/edit/:id'>EditUser</Link></NavDropdown.Item>
               </NavDropdown>
             </Navbar.Collapse>
           </Navbar>        
           <Route path='/users' exact component = {ReadUser} />
           <Route path='/users/create' exact component = {CreateUser} />
-          <Route path='/users/edit:id' exact component = {EditUser} />
+          <Route path='/users/edit/:id' exact component = {EditUser} />
         </Container>
       </Router>
     );

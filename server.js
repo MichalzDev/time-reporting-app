@@ -49,6 +49,14 @@ userRoutes.route('/create').post(function(req, res) {
         res.status(400).send('adding user failed');
     });
 });
+userRoutes.route('/delete/:id').delete(function(req, res) {
+    User.findByIdAndDelete(req.params.id)
+    .then(user => {
+        res.json('User deleted')
+    })
+    .catch(err => res.status(400).send('deleting user failed'));
+});
+
 userRoutes.route('/update/:id').post(function(req, res) {
     User.findById(req.params.id, function(err, user) {
         if(!user)
