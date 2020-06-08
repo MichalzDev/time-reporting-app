@@ -31,6 +31,7 @@ class App extends Component {
     permission: "",
     name: "",
     redirect: null,
+    id: ""
   };
 
   componentDidMount() {
@@ -81,14 +82,16 @@ class App extends Component {
       );
   };
 
-  redirect = (link) => {
+  redirect = (link, id) => {
     this.setState({
-      redirect: link
+      redirect: link,
+      id: id
     })
   }
 
   render() {
     if (this.state.redirect) {
+      console.log(this.state)
       return (
         <Router>
           <Redirect to={this.state.redirect} />
@@ -111,8 +114,12 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/reports/create/:name" render={(props) => (
+          <Route path={"/reports/create/" + this.state.name} render={(props) => (
             <CreateReport {...props} name={this.state.name}/>
+          )} />
+
+<Route path={"/reports/edit/" + this.state.id} render={(props) => (
+            <EditReport {...props} name={this.state.name}/>
           )} />
         </Router>
       );
