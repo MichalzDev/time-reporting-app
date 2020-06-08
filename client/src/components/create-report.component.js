@@ -14,16 +14,16 @@ class CreateReport extends Component {
     this.onChangeReportWho = this.onChangeReportWho.bind(this);
     this.onChangeReportProject = this.onChangeReportProject.bind(this);
     this.onChangeReportFrom = this.onChangeReportFrom.bind(this);
-    this.onChangeReportTo = this.onChangeReportTo.bind(this);
     this.onChangeReportHours = this.onChangeReportHours.bind(this);
+    this.onChangeReportStatus = this.onChangeReportStatus.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
       report_who: "",
       report_project: "",
       report_from: "",
-      report_to: "",
       report_hours: "",
+      report_status: "not_verified",
       data_who: [],
       data_project: [],
     };
@@ -64,9 +64,9 @@ class CreateReport extends Component {
       report_from: e.toLocaleDateString(),
     });
   }
-  onChangeReportTo(e) {
+  onChangeReportStatus(e) {
     this.setState({
-      report_to: e.toLocaleDateString(),
+      report_status: e.target.value,
     });
   }
   onChangeReportHours(e) {
@@ -81,15 +81,15 @@ class CreateReport extends Component {
     console.log(`Report Who: ${this.state.report_who}`);
     console.log(`Report Project: ${this.state.report_project}`);
     console.log(`Report From: ${this.state.report_from}`);
-    console.log(`Report To: ${this.state.report_to}`);
+    console.log(`Report Status: ${this.state.report_status}`);
     console.log(`Report Hours: ${this.state.report_hours}`);
 
     const newReport = {
       report_who: this.state.report_who,
       report_project: this.state.report_project,
       report_from: this.state.report_from,
-      report_to: this.state.report_to,
       report_hours: this.state.report_hours,
+      report_status: this.state.report_status,
     };
 
     axios
@@ -102,8 +102,8 @@ class CreateReport extends Component {
       report_who: "",
       report_project: "",
       report_from: "",
-      report_to: "",
       report_hours: "",
+      report_status: "",
       data_who: [],
       data_project: [],
     });
@@ -151,19 +151,14 @@ class CreateReport extends Component {
                 ></DayPickerInput>
               </Col>
               <Col>
-                <Form.Label>To: </Form.Label>
-                <DayPickerInput
-                  value={this.state.report_to}
-                  onDayChange={this.onChangeReportTo}
-                ></DayPickerInput>
+                <Form.Label>Hours: </Form.Label>
+                <Form.Control
+                  type="number"
+                  value={this.state.report_hours}
+                  onChange={this.onChangeReportHours}
+                ></Form.Control>
               </Col>
             </Form.Row>
-            <Form.Label>Hours: </Form.Label>
-            <Form.Control
-              type="number"
-              value={this.state.report_hours}
-              onChange={this.onChangeReportHours}
-            ></Form.Control>
           </Form.Group>
 
           <Form.Group>
