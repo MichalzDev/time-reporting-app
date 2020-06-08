@@ -46,6 +46,14 @@ class EditReport extends Component {
         console.log(err);
       });
     axios
+      .get("http://localhost:5000/projects/")
+      .then((res) => {
+        this.setState({ data_project: res.data });
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+    axios
       .get("http://localhost:5000/users/")
       .then((res) => {
         this.setState({ data_who: res.data });
@@ -53,6 +61,7 @@ class EditReport extends Component {
       .catch(function (err) {
         console.log(err);
       });
+    console.log(this.data_who);
 
     console.log(this.data_project);
   }
@@ -122,6 +131,13 @@ class EditReport extends Component {
   userList() {
     return this.state.data_who.map((el) => {
       return <OptionUser user={el} key={el._id} value={el.name}></OptionUser>;
+    });
+  }
+  projectList() {
+    return this.state.data_project.map((el) => {
+      return (
+        <OptionUser project={el} key={el._id} value={el.name}></OptionUser>
+      );
     });
   }
 

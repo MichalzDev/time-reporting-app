@@ -9,7 +9,7 @@ let Report = new Schema({
     type: String,
   },
   report_from: {
-    type: Date,
+    type: String,
   },
   report_hours: {
     type: String,
