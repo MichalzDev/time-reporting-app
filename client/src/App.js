@@ -29,6 +29,7 @@ class App extends Component {
     login: "",
     password: "",
     permission: "",
+    name: "",
     redirect: null,
   };
 
@@ -42,6 +43,7 @@ class App extends Component {
             password: res.user_password,
             permission: res.user_permissions,
             redirect: "/" + res.user_permissions,
+            name: res.user_name
           });
         }
       });
@@ -74,6 +76,7 @@ class App extends Component {
         this.setState({
           permission: res.user_permissions,
           redirect: "/" + res.user_permissions,
+          name: res.user_name
         })
       );
   };
@@ -104,7 +107,7 @@ class App extends Component {
               <User
                 {...props}
                 redirect={this.redirect}
-                state={this.state}
+                user={this.state}
               />
             )}
           />

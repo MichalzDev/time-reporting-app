@@ -10,12 +10,7 @@ router.route('/').get(function(req, res) {
         }
     });
 });
-router.route('/:id').get(function(req, res) {
-    let id = req.params.id;
-    Report.findById(id, function(err, report){
-        res.json(report);
-    });
-});
+
 router.route('/create').post(function(req, res) {
     let report = new Report(req.body);
     report.save()
@@ -50,6 +45,16 @@ router.route('/update/:id').post(function(req, res) {
             .catch(err => {
                 res.status(400).send("Update not possible")
             });
+    });
+});
+
+router.route('/:name').get(function(req, res) {
+    Report.find({report_who: req.params.name}, (err, report) => {
+        if(err) {
+            res.status(404).json('there are no reports for this user');
+        } else {
+            res.json(report);
+        }
     });
 });
 
