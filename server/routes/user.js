@@ -10,6 +10,17 @@ router.route("/").get(function (req, res) {
     }
   });
 });
+
+router.route("/isLoggedIn").get(function (req, res) {
+  User.findOne({ isLoggedIn: true }, function (err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
+
 router.route("/:id").get(function (req, res) {
   let id = req.params.id;
   User.findById(id, function (err, user) {
@@ -55,15 +66,29 @@ router.route("/update/:id").post(function (req, res) {
   });
 });
 
-router.route("/:login/:password").get(function (req, res) {
-  User.find(
+router.route("/:login/:password").put(function (req, res) {
+  User.findOneAndUpdate(
     { user_login: req.params.login, user_password: req.params.password },
-    "user_permissions",
-    function (err, result) {
+    { isLoggedIn: true },
+    function (err, user) {
       if (err) {
-        res.json(err);
+        res.status(404).json("there is no such user");
       } else {
-        res.json(result);
+        res.json(user);
+      }
+    }
+  );
+});
+
+router.route("/logout").put(function (req, res) {
+  User.findOneAndUpdate(
+    { isLoggedIn: true },
+    { $set: { isLoggedIn: false } },
+    function (err, user) {
+      if (err) {
+        res.status(404).json("there is no one logged in");
+      } else {
+        res.json(user);
       }
     }
   );

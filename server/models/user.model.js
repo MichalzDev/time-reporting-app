@@ -20,6 +20,7 @@ let User = new Schema({
     user_permissions:{
         type: String
     },
+    isLoggedIn: {type: Boolean, default: false}
 });
 
 module.exports = mongoose.model('User', User)

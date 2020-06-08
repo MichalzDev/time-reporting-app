@@ -21,6 +21,7 @@ import EditProject from "./components/edit-project.component";
 import CreateReport from "./components/create-report.component";
 import ReadReport from "./components/read-report.component";
 import EditReport from "./components/edit-report.component";
+import Admin from "./components/admin";
 
 class App extends Component {
   state = {
@@ -29,6 +30,21 @@ class App extends Component {
     permission: "",
     redirect: null,
   };
+
+  componentDidMount() {
+    fetch("http://localhost:5000/users/isLoggedIn")
+      .then((res) => res.json())
+      .then((res) => {
+        if (res !== null) {
+          this.setState({
+            login: res.user_login,
+            password: res.user_password,
+            permission: res.user_permissions,
+            redirect: "/" + res.user_permissions,
+          });
+        }
+      });
+  }
 
   onChangeLogin = (e) => {
     this.setState({
@@ -47,23 +63,40 @@ class App extends Component {
       "http://localhost:5000/users/" +
         this.state.login +
         "/" +
-        this.state.password
+        this.state.password,
+      {
+        method: "PUT",
+      }
     )
       .then((res) => res.json())
       .then((res) =>
         this.setState({
-          permission: res[0].user_permissions,
-          redirect: '/' + res[0].user_permissions
+          permission: res.user_permissions,
+          redirect: "/" + res.user_permissions,
         })
       );
   };
+
+  redirect = (link) => {
+    this.setState({
+      redirect: link
+    })
+  }
 
   render() {
     if (this.state.redirect) {
       return (
         <Router>
-          <Route path="/user" exact component={ReadUser} /> {/* do zmiany */}
           <Redirect to={this.state.redirect} />
+          <Route
+            path="/admin"
+            render={(props) => (
+              <Admin
+                {...props}
+                redirect={this.redirect}
+              />
+            )}
+          />
         </Router>
       );
     }
@@ -99,14 +132,6 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/users/create" exact component={CreateUser} />
-          <Route path="/users/edit/:id" exact component={EditUser} />
-          <Route path="/projects" exact component={ReadProject} />
-          <Route path="/projects/create" exact component={CreateProject} />
-          <Route path="/projects/edit/:id" exact component={EditProject} />
-          <Route path="/reports" exact component={ReadReport} />
-          <Route path="/reports/create" exact component={CreateReport} />
-          <Route path="/reports/edit/:id" exact component={EditReport} />
         </Container>
       </Router>
     );
