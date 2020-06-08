@@ -5,6 +5,7 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
+
 const OptionProject = (props) => <option>{props.project.project_name}</option>;
 const OptionUser = (props) => <option>{props.user.user_name}</option>;
 class EditReport extends Component {
@@ -31,7 +32,7 @@ class EditReport extends Component {
   componentDidMount() {
     this._isMounted = true;
     axios
-      .get("http://localhost:5000/reports/" + this.props.match.params.id)
+      .get("http://localhost:5000/reports/" + this.props.reportId)
       .then((res) => {
         this.setState({
           report_who: res.data.report_who,
@@ -141,7 +142,7 @@ class EditReport extends Component {
   }
 
   render() {
-      console.log(this.state)
+    console.log(this.state);
     return (
       <div style={{ marginTop: 20 }}>
         <h3>Edit Report</h3>
