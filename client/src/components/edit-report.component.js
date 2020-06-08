@@ -61,9 +61,12 @@ class EditReport extends Component {
       .catch(function (err) {
         console.log(err);
       });
+<<<<<<< HEAD
     console.log(this.data_who);
 
     console.log(this.data_project);
+=======
+>>>>>>> fedf731249c5c3ef20443855e789fca42b91e5ca
   }
 
   onChangeReportWho(e) {
@@ -111,7 +114,7 @@ class EditReport extends Component {
 
     axios
       .post(
-        "http://localhost:5000/reports/edit/" + this.props.match.params.id,
+        "http://localhost:5000/reports/edit/" + this.props.reportId,
         obj
       )
       .then((res) => console.log(res.data));
@@ -147,6 +150,7 @@ class EditReport extends Component {
       <div style={{ marginTop: 20 }}>
         <h3>Edit Report</h3>
         <Form onSubmit={this.onSubmit}>
+<<<<<<< HEAD
           <Form.Group>
             <Form.Label>Who: </Form.Label>
             <Form.Control
@@ -169,6 +173,28 @@ class EditReport extends Component {
               onChange={this.onChangeReportProject}
             ></Form.Control>
           </Form.Group>
+=======
+          <Form.Label>Who: </Form.Label>
+          <Form.Control
+            as="select"
+            value={this.state.report_who}
+            onChange={this.onChangeReportWho}
+          >
+            {this.props.name ? (
+              <option>{this.props.name}</option>
+            ) : (
+              this.userList()
+            )}
+          </Form.Control>
+          <Form.Label>Project: </Form.Label>
+          <Form.Control
+            as="select"
+            value={this.state.report_project}
+            onChange={this.onChangeReportProject}
+          >
+            {this.projectList()}
+          </Form.Control>
+>>>>>>> fedf731249c5c3ef20443855e789fca42b91e5ca
           <Form.Label>Status: </Form.Label>
           <Form.Control
             as="select"
