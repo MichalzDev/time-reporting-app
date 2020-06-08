@@ -119,7 +119,7 @@ class App extends Component {
           )} />
 
 <Route path={"/reports/edit/" + this.state.id} render={(props) => (
-            <EditReport {...props} name={this.state.name}/>
+            <EditReport {...props} name={this.state.name} reportId={this.state.id}/>
           )} />
         </Router>
       );
