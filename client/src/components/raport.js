@@ -16,7 +16,6 @@ const useStyles = makeStyles({
 
 export default function SimpleTable({reports}) {
   const classes = useStyles();
-  console.log(reports)
 
   return (
     <TableContainer component={Paper}>
