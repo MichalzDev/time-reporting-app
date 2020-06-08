@@ -131,7 +131,7 @@ class CreateReport extends Component {
             value={this.state.report_who}
             onChange={this.onChangeReportWho}
           >
-            {this.userList()}
+            {this.props.name ? <option>{this.props.name}</option> : this.userList()}
           </Form.Control>
           <Form.Label>Project: </Form.Label>
           <Form.Control

@@ -111,7 +111,9 @@ class App extends Component {
               />
             )}
           />
-          <Route path="/reports/create/:name" exact component={CreateReport} />
+          <Route path="/reports/create/:name" render={(props) => (
+            <CreateReport {...props} name={this.state.name}/>
+          )} />
         </Router>
       );
     }
