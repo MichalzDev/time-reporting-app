@@ -126,7 +126,6 @@ class CreateReport extends Component {
         <h3>Nowy Raport</h3>
         <Form onSubmit={this.onSubmit}>
           <Form.Label>Who: </Form.Label>
-<<<<<<< HEAD
           <Form.Control
             as="select"
             value={this.state.report_who}
@@ -137,13 +136,16 @@ class CreateReport extends Component {
             ) : (
               this.userList()
             )}
-=======
+          </Form.Control>
           <Form.Control as="select" onChange={this.onChangeReportWho}>
             <option value="none" selected disabled>
               Wybierz Użytkownika
             </option>
-            {this.props.name ? <option>{this.props.name}</option> : this.userList()}
->>>>>>> fa1be15489be87aa6d611dbb835db2cf3e5510ae
+            {this.props.name ? (
+              <option>{this.props.name}</option>
+            ) : (
+              this.userList()
+            )}
           </Form.Control>
           <Form.Label>Project: </Form.Label>
           <Form.Control as="select" onChange={this.onChangeReportProject}>

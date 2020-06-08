@@ -45,14 +45,6 @@ class EditReport extends Component {
         console.log(err);
       });
     axios
-      .get("http://localhost:5000/projects/")
-      .then((res) => {
-        this.setState({ data_project: res.data });
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-    axios
       .get("http://localhost:5000/users/")
       .then((res) => {
         this.setState({ data_who: res.data });
@@ -60,7 +52,8 @@ class EditReport extends Component {
       .catch(function (err) {
         console.log(err);
       });
-    console.log(this.data_who);
+
+    console.log(this.data_project);
   }
 
   onChangeReportWho(e) {
@@ -121,6 +114,8 @@ class EditReport extends Component {
       report_from: "",
       report_hours: "",
       report_status: "",
+      data_who: [],
+      data_project: [],
     });
   }
   userList() {
@@ -128,44 +123,35 @@ class EditReport extends Component {
       return <OptionUser user={el} key={el._id} value={el.name}></OptionUser>;
     });
   }
-  projectList() {
-    return this.state.data_project.map((el) => {
-      return (
-        <OptionProject
-          project={el}
-          key={el._id}
-          value={el.name}
-        ></OptionProject>
-      );
-    });
-  }
 
   render() {
-      console.log(this.state)
+    console.log(this.state);
     return (
       <div style={{ marginTop: 20 }}>
         <h3>Edit Report</h3>
         <Form onSubmit={this.onSubmit}>
-          <Form.Label>Who: </Form.Label>
-          <Form.Control
-            as="select"
-            value={this.state.report_who}
-            onChange={this.onChangeReportWho}
-          >
-            {this.props.name ? (
-              <option>{this.props.name}</option>
-            ) : (
-              this.userList()
-            )}
-          </Form.Control>
-          <Form.Label>Project: </Form.Label>
-          <Form.Control
-            type="select"
-            value={this.state.report_project}
-            onChange={this.onChangeReportProject}
-          >
-            {/* {this.projectList()} */}
-          </Form.Control>
+          <Form.Group>
+            <Form.Label>Who: </Form.Label>
+            <Form.Control
+              as="select"
+              value={this.state.report_who}
+              onChange={this.onChangeReportWho}
+            >
+              {this.props.name ? (
+                <option>{this.props.name}</option>
+              ) : (
+                this.userList()
+              )}
+            </Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Project: </Form.Label>
+            <Form.Control
+              type="text"
+              value={this.report_project}
+              onChange={this.onChangeReportProject}
+            ></Form.Control>
+          </Form.Group>
           <Form.Label>Status: </Form.Label>
           <Form.Control
             as="select"
