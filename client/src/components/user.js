@@ -29,7 +29,7 @@ class User extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:5000/reports/" + this.props.user.name)
+    fetch("http://localhost:5000/reports/user/" + this.props.user.name)
       .then((res) => res.json())
       .then((res) =>
         this.setState({
@@ -49,14 +49,14 @@ class User extends Component {
               <Button
                 variant="secondary"
                 className="m-2"
-                onClick={() => this.props.redirect("/user")}
+                onClick={() => this.props.redirect("/reports/user/" + this.props.user.name)}
               >
                 Moje raporty
               </Button>
               <Button
                 variant="secondary"
                 className="m-2"
-                onClick={() => this.props.redirect("/reports/create/:login")}
+                onClick={() => this.props.redirect("/reports/create/:name")}
               >
                 Utwórz raport
               </Button>
@@ -73,7 +73,7 @@ class User extends Component {
               </Button>
             </Navbar.Collapse>
           </Navbar>
-          <Route path="/users/" exact component={ReadUser} />
+          {/* <Route path="/users/" exact component={ReadUser} />
           <Route path="/users/create" exact component={CreateUser} />
           <Route path="/users/edit/:id" exact component={EditUser} />
           <Route path="/projects" exact component={ReadProject} />
@@ -81,7 +81,8 @@ class User extends Component {
           <Route path="/projects/edit/:id" exact component={EditProject} />
           <Route path="/reports" exact component={ReadReport} />
           <Route path="/reports/create" exact component={CreateReport} />
-          <Route path="/reports/edit/:id" exact component={EditReport} />
+          <Route path="/reports/edit/:id" exact component={EditReport} /> */}
+          <h3 style={{textAlign: 'center'}} className="mt-3 mb-3">Raporty {this.props.user.name}</h3>
           <Raport reports={this.state.reports} />
         </Container>
       </Router>

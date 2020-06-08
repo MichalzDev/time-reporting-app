@@ -126,11 +126,20 @@ class CreateReport extends Component {
         <h3>Nowy Raport</h3>
         <Form onSubmit={this.onSubmit}>
           <Form.Label>Who: </Form.Label>
+<<<<<<< HEAD
           <Form.Control as="select" onChange={this.onChangeReportWho}>
             <option value="none" selected disabled>
               Wybierz Użytkownika
             </option>
             {this.userList()}
+=======
+          <Form.Control
+            as="select"
+            value={this.state.report_who}
+            onChange={this.onChangeReportWho}
+          >
+            {this.props.name ? <option>{this.props.name}</option> : this.userList()}
+>>>>>>> f85ffa70830165a0ccbc365e84fed28ff9da7f0a
           </Form.Control>
           <Form.Label>Project: </Form.Label>
           <Form.Control as="select" onChange={this.onChangeReportProject}>

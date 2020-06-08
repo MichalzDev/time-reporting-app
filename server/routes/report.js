@@ -54,14 +54,14 @@ router.route("/edit/:id").post(function (req, res) {
   });
 });
 
-router.route("/:name").get(function (req, res) {
-  Report.find({ report_who: req.params.name }, (err, report) => {
-    if (err) {
-      res.status(404).json("there are no reports for this user");
-    } else {
-      res.json(report);
-    }
-  });
+router.route('/user/:name').get(function(req, res) {
+    Report.find({report_who: req.params.name}, (err, report) => {
+        if(err) {
+            res.status(404).json('there are no reports for this user');
+        } else {
+            res.json(report);
+        }
+    });
 });
 
 module.exports = router;
