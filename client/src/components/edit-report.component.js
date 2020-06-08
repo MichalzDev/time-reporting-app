@@ -141,9 +141,10 @@ class EditReport extends Component {
   }
 
   render() {
+      console.log(this.state)
     return (
       <div style={{ marginTop: 20 }}>
-        <h3>Create New Report</h3>
+        <h3>Edit Report</h3>
         <Form onSubmit={this.onSubmit}>
           <Form.Label>Who: </Form.Label>
           <Form.Control
@@ -151,7 +152,11 @@ class EditReport extends Component {
             value={this.state.report_who}
             onChange={this.onChangeReportWho}
           >
-            {this.userList()}
+            {this.props.name ? (
+              <option>{this.props.name}</option>
+            ) : (
+              this.userList()
+            )}
           </Form.Control>
           <Form.Label>Project: </Form.Label>
           <Form.Control

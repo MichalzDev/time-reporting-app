@@ -6,6 +6,7 @@ import {
   Redirect,
 } from "react-router-dom";
 import Container from "react-bootstrap/Container";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -56,7 +57,7 @@ class User extends Component {
               <Button
                 variant="secondary"
                 className="m-2"
-                onClick={() => this.props.redirect("/reports/create/:name")}
+                onClick={() => this.props.redirect('/reports/create/' + this.props.user.name)}
               >
                 Utwórz raport
               </Button>
@@ -83,7 +84,7 @@ class User extends Component {
           <Route path="/reports/create" exact component={CreateReport} />
           <Route path="/reports/edit/:id" exact component={EditReport} /> */}
           <h3 style={{textAlign: 'center'}} className="mt-3 mb-3">Raporty {this.props.user.name}</h3>
-          <Raport reports={this.state.reports} />
+          <Raport reports={this.state.reports} redirect={this.props.redirect}/>
         </Container>
       </Router>
     );
