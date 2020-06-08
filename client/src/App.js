@@ -22,6 +22,7 @@ import CreateReport from "./components/create-report.component";
 import ReadReport from "./components/read-report.component";
 import EditReport from "./components/edit-report.component";
 import Admin from "./components/admin";
+import User from './components/user';
 
 class App extends Component {
   state = {
@@ -94,6 +95,16 @@ class App extends Component {
               <Admin
                 {...props}
                 redirect={this.redirect}
+              />
+            )}
+          />
+                    <Route
+            path="/user"
+            render={(props) => (
+              <User
+                {...props}
+                redirect={this.redirect}
+                state={this.state}
               />
             )}
           />

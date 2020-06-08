@@ -132,7 +132,7 @@ class EditReport extends Component {
                             <Button variant="primary" type="submit">Create Report</Button>
                         </Col> 
                         <Col>
-                            <Button variant="danger" href="/reports">Cancel</Button>
+                            <Button variant="danger" onClick={() => this.props.history.push('/reports')}>Cancel</Button>
                         </Col>
                         </Form.Row>
                     </Form.Group>
