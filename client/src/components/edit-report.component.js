@@ -61,7 +61,6 @@ class EditReport extends Component {
       .catch(function (err) {
         console.log(err);
       });
-    console.log(this.data_who);
   }
 
   onChangeReportWho(e) {
@@ -109,7 +108,7 @@ class EditReport extends Component {
 
     axios
       .post(
-        "http://localhost:5000/reports/edit/" + this.props.match.params.id,
+        "http://localhost:5000/reports/edit/" + this.props.reportId,
         obj
       )
       .then((res) => console.log(res.data));
@@ -161,11 +160,11 @@ class EditReport extends Component {
           </Form.Control>
           <Form.Label>Project: </Form.Label>
           <Form.Control
-            type="select"
+            as="select"
             value={this.state.report_project}
             onChange={this.onChangeReportProject}
           >
-            {/* {this.projectList()} */}
+            {this.projectList()}
           </Form.Control>
           <Form.Label>Status: </Form.Label>
           <Form.Control
