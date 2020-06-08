@@ -69,7 +69,7 @@ class EditProject extends Component {
   render() {
     return (
       <div style={{ marginTop: 20 }}>
-        <h3>Create New Project</h3>
+        <h3>Edit Project</h3>
         <Form onSubmit={this.onSubmit}>
           <Form.Group>
             <Form.Row>

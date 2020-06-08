@@ -5,7 +5,7 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
-const OptionProject = (props) => <option>{props.report.project_name}</option>;
+const OptionProject = (props) => <option>{props.project.project_name}</option>;
 const OptionUser = (props) => <option>{props.user.user_name}</option>;
 class EditReport extends Component {
   _isMounted = false;
@@ -95,8 +95,8 @@ class EditReport extends Component {
     console.log(`Report Who: ${this.state.report_who}`);
     console.log(`Report Project: ${this.state.report_project}`);
     console.log(`Report From: ${this.state.report_from}`);
-    console.log(`Report Status: ${this.state.report_status}`);
     console.log(`Report Hours: ${this.state.report_hours}`);
+    console.log(`Report Status: ${this.state.report_status}`);
 
     const obj = {
       report_who: this.state.report_who,
@@ -128,6 +128,17 @@ class EditReport extends Component {
       return <OptionUser user={el} key={el._id} value={el.name}></OptionUser>;
     });
   }
+  projectList() {
+    return this.state.data_project.map((el) => {
+      return (
+        <OptionProject
+          project={el}
+          key={el._id}
+          value={el.name}
+        ></OptionProject>
+      );
+    });
+  }
 
   render() {
     return (
@@ -147,7 +158,9 @@ class EditReport extends Component {
             type="select"
             value={this.state.report_project}
             onChange={this.onChangeReportProject}
-          ></Form.Control>
+          >
+            {/* {this.projectList()} */}
+          </Form.Control>
           <Form.Label>Status: </Form.Label>
           <Form.Control
             as="select"

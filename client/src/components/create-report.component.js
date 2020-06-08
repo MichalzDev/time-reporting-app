@@ -123,35 +123,33 @@ class CreateReport extends Component {
   render() {
     return (
       <div style={{ marginTop: 20 }}>
-        <h3>Create New Report</h3>
+        <h3>Nowy Raport</h3>
         <Form onSubmit={this.onSubmit}>
           <Form.Label>Who: </Form.Label>
-          <Form.Control
-            as="select"
-            value={this.state.report_who}
-            onChange={this.onChangeReportWho}
-          >
+          <Form.Control as="select" onChange={this.onChangeReportWho}>
+            <option value="none" selected disabled>
+              Wybierz Użytkownika
+            </option>
             {this.userList()}
           </Form.Control>
           <Form.Label>Project: </Form.Label>
-          <Form.Control
-            as="select"
-            value={this.state.report_project}
-            onChange={this.onChangeReportProject}
-          >
+          <Form.Control as="select" onChange={this.onChangeReportProject}>
+            <option value="none" selected disabled>
+              Wybierz Projekt
+            </option>
             {this.projectList()}
           </Form.Control>
           <Form.Group>
             <Form.Row>
               <Col>
-                <Form.Label>From: </Form.Label>
+                <Form.Label>Data: </Form.Label>
                 <DayPickerInput
                   value={this.state.report_from}
                   onDayChange={this.onChangeReportFrom}
                 ></DayPickerInput>
               </Col>
               <Col>
-                <Form.Label>Hours: </Form.Label>
+                <Form.Label>Ilość Godzin: </Form.Label>
                 <Form.Control
                   type="number"
                   value={this.state.report_hours}
@@ -165,12 +163,12 @@ class CreateReport extends Component {
             <Form.Row>
               <Col>
                 <Button variant="primary" type="submit">
-                  Create Report
+                  Stwórz Report
                 </Button>
               </Col>
               <Col>
                 <Button variant="danger" href="/reports">
-                  Cancel
+                  Anuluj
                 </Button>
               </Col>
             </Form.Row>

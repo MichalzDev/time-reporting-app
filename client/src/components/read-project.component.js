@@ -7,14 +7,14 @@ const Project = (props) => (
     <td>{props.project.project_name}</td>
     <td>{props.project.project_members}</td>
     <td>
-      <Link to={"/projects/edit/" + props.project._id}>Edit </Link>
+      <Link to={"/projects/edit/" + props.project._id}> Edytuj </Link>
       <a
         href="/projects"
         onClick={() => {
           props.deleteProject(props.project._id);
         }}
       >
-        Delete
+        Usuń
       </a>
     </td>
   </tr>
@@ -77,13 +77,13 @@ class ReadProject extends Component {
   render() {
     return (
       <div>
-        <h3>Projects List</h3>
+        <h3>Lista Projektów</h3>
         <Table striped bordered hover style={{ marginTop: 20 }}>
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Members</th>
-              <th>Actions</th>
+              <th>Nazwa</th>
+              <th>Opis</th>
+              <th>Akcja</th>
             </tr>
           </thead>
           <tbody>{this.projectList()}</tbody>

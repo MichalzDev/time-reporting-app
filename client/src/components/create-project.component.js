@@ -56,12 +56,12 @@ class CreateProject extends Component {
   render() {
     return (
       <div style={{ marginTop: 20 }}>
-        <h3>Create New Project</h3>
+        <h3>Stwórz Nowy Projekt</h3>
         <Form onSubmit={this.onSubmit}>
           <Form.Group>
             <Form.Row>
               <Col>
-                <Form.Label>Name: </Form.Label>
+                <Form.Label>Nazwa: </Form.Label>
                 <Form.Control
                   type="text"
                   value={this.state.project_name}
@@ -69,7 +69,7 @@ class CreateProject extends Component {
                 ></Form.Control>
               </Col>
               <Col>
-                <Form.Label>Members: </Form.Label>
+                <Form.Label>Opis: </Form.Label>
                 <Form.Control
                   type="text"
                   value={this.state.project_members}
@@ -80,9 +80,21 @@ class CreateProject extends Component {
           </Form.Group>
 
           <Form.Group>
-            <Button variant="primary" type="submit">
-              Create Project
-            </Button>
+            <Form.Row>
+              <Col>
+                <Button variant="primary" type="submit">
+                  Utwórz Project
+                </Button>
+              </Col>
+              <Col>
+                <Button
+                  variant="danger"
+                  onClick={() => this.props.history.push("/projects")}
+                >
+                  Anuluj
+                </Button>
+              </Col>
+            </Form.Row>
           </Form.Group>
         </Form>
       </div>

@@ -11,14 +11,14 @@ const User = (props) => (
     {/* <td>{props.user.user_projects}</td> */}
     <td>{props.user.user_permissions}</td>
     <td>
-      <Link to={"/users/edit/" + props.user._id}>Edit </Link>
+      <Link to={"/users/edit/" + props.user._id}>Edytuj </Link>
       <a
         href="/users"
         onClick={() => {
           props.deleteUser(props.user._id);
         }}
       >
-        Delete
+        Usuń
       </a>
     </td>
   </tr>
@@ -83,17 +83,17 @@ class ReadUser extends Component {
   render() {
     return (
       <div>
-        <h3>Users List</h3>
+        <h3>Lista Urzytkowników</h3>
         <Table striped bordered hover style={{ marginTop: 20 }}>
           <thead>
             <tr>
               {/* <th>id</th> */}
               <th>Login</th>
-              <th>Name</th>
-              <th>Role</th>
+              <th>Imię</th>
+              <th>Rola</th>
               {/* <th>Projects</th> */}
-              <th>Permissions</th>
-              <th>Actions</th>
+              <th>Uprawnienia</th>
+              <th>Akcje</th>
             </tr>
           </thead>
           <tbody>{this.userList()}</tbody>
