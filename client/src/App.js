@@ -111,6 +111,7 @@ class App extends Component {
               />
             )}
           />
+          <Route path="/reports/create/:name" exact component={CreateReport} />
         </Router>
       );
     }

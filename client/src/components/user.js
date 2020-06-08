@@ -29,7 +29,7 @@ class User extends Component {
   };
 
   componentDidMount() {
-    fetch("http://localhost:5000/reports/user" + this.props.user.name)
+    fetch("http://localhost:5000/reports/user/" + this.props.user.name)
       .then((res) => res.json())
       .then((res) =>
         this.setState({
@@ -49,14 +49,14 @@ class User extends Component {
               <Button
                 variant="secondary"
                 className="m-2"
-                onClick={() => this.props.redirect("/user")}
+                onClick={() => this.props.redirect("/reports/user/" + this.props.user.name)}
               >
                 Moje raporty
               </Button>
               <Button
                 variant="secondary"
                 className="m-2"
-                onClick={() => this.props.redirect("/reports/create/:login")}
+                onClick={() => this.props.redirect("/reports/create/:name")}
               >
                 Utwórz raport
               </Button>
