@@ -23,7 +23,7 @@ import ReadReport from "./components/read-report.component";
 import EditReport from "./components/edit-report.component";
 import Admin from "./components/admin";
 import User from "./components/user";
-// import Supervisor from "./components/supervisor";
+import Supervisor from "./components/supervisor";
 
 class App extends Component {
   state = {
@@ -123,7 +123,7 @@ class App extends Component {
               />
             )}
           />
-          {/* <Route
+          <Route
             path="/supervisor"
             render={(props) => (
               <Supervisor
@@ -132,7 +132,7 @@ class App extends Component {
                 user={this.state}
               />
             )}
-          /> */}
+          />
         </Router>
       );
     }
