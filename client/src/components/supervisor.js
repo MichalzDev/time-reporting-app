@@ -63,6 +63,13 @@ class User extends Component {
                 Wszystkie projekty
               </Button>
               <Button
+                variant="secondary"
+                className="m-2"
+                onClick={() => this.props.redirect('/projects/create')}
+              >
+                Stworz projekt
+              </Button>
+              <Button
                 type="button"
                 onClick={() => {
                   fetch("http://localhost:5000/users/logout", {
@@ -77,11 +84,11 @@ class User extends Component {
           </Navbar>
           {/* <Route path="/users/" exact component={ReadUser} />
           <Route path="/users/create" exact component={CreateUser} />
-          <Route path="/users/edit/:id" exact component={EditUser} />
+          <Route path="/users/edit/:id" exact component={EditUser} /> */}
           <Route path="/projects" exact component={ReadProject} />
           <Route path="/projects/create" exact component={CreateProject} />
           <Route path="/projects/edit/:id" exact component={EditProject} />
-          <Route path="/reports" exact component={ReadReport} />
+          {/* <Route path="/reports" exact component={ReadReport} />
           <Route path="/reports/create" exact component={CreateReport} />
           <Route path="/reports/edit/:id" exact component={EditReport} /> */}
           <h3 style={{textAlign: 'center'}} className="mt-3 mb-3">Raporty</h3>

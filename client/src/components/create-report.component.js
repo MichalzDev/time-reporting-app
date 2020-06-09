@@ -209,7 +209,6 @@ class CreateReport extends Component {
                 <Button
                   variant="primary"
                   type="submit"
-                  onClick={() => this.props.history.push("/reports")}
                 >
                   Stwórz
                 </Button>
@@ -217,7 +216,7 @@ class CreateReport extends Component {
               <Col>
                 <Button
                   variant="danger"
-                  onClick={() => this.props.history.push("/")}
+                  onClick={() => window.location.reload()}
                 >
                   Anuluj
                 </Button>

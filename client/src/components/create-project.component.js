@@ -89,7 +89,7 @@ class CreateProject extends Component {
               <Col>
                 <Button
                   variant="danger"
-                  onClick={() => this.props.history.push("/projects")}
+                  onClick={() => window.location.reload()}
                 >
                   Anuluj
                 </Button>

@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+
 const tdStyle = {
   backgroundColor: "green",
   textAlign: "center",
@@ -106,6 +108,12 @@ class ReadReport extends Component {
           </thead>
           <tbody>{this.reportList()}</tbody>
         </Table>
+        <Button
+                  variant="danger"
+                  onClick={() => window.location.reload()}
+                >
+                  Wyjdz
+                </Button>
       </div>
     );
   }

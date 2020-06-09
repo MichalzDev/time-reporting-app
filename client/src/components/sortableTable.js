@@ -57,7 +57,7 @@ const Table = ({ reports, redirect }) => {
       method: "PUT",
     });
 
-    redirect("/supervisor");
+    window.location.reload()
   };
 
   const acceptOne = (id) => {
@@ -65,7 +65,7 @@ const Table = ({ reports, redirect }) => {
       method: "PUT",
     });
 
-    redirect("/supervisor");
+    window.location.reload()
   };
 
   const rejectOne = (id) => {
@@ -73,7 +73,7 @@ const Table = ({ reports, redirect }) => {
       method: "PUT",
     });
 
-    redirect("/supervisor");
+    window.location.reload()
   };
 
   const exportPDF = () => {

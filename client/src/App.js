@@ -133,6 +133,9 @@ class App extends Component {
               />
             )}
           />
+                    <Route path="/projects" exact component={ReadProject} />
+          <Route path="/projects/create" exact component={CreateProject} />
+          <Route path="/projects/edit/:id" exact component={EditProject} />
         </Router>
       );
     }

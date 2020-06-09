@@ -254,7 +254,7 @@ class EditReport extends Component {
                 <Col>
                   <Button
                     variant="danger"
-                    onClick={() => this.props.history.push("/reports")}
+                    onClick={() => window.location.reload()}
                   >
                     Anuluj
                   </Button>

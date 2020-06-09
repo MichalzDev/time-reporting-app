@@ -191,7 +191,7 @@ class EditUser extends Component {
               <Col>
                 <Button
                   variant="danger"
-                  onClick={() => this.props.history.push("/users")}
+                  onClick={() => window.location.reload()}
                 >
                   Anuluj
                 </Button>
