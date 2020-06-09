@@ -6,6 +6,8 @@ import Button from "react-bootstrap/Button";
 import PictureAsPdfIcon from '@material-ui/icons/PictureAsPdf';
 import "bootstrap/dist/css/bootstrap.min.css";
 import PDF from './pdf';
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const FilterableTable = require("react-filterable-table");
 
@@ -71,9 +73,38 @@ const Table = ({reports, redirect}) => {
     redirect('/supervisor')
   }
 
+  const exportPDF = () => {
+    const unit = "pt";
+    const size = "A4"; // Use A1, A2, A3 or A4
+    const orientation = "landscape"; // portrait or landscape
+
+    const marginLeft = 40;
+    const doc = new jsPDF(orientation, unit, size);
+
+    doc.setFontSize(15);
+
+    const title = "Raport";
+    const headers = [["PROJEKT", "KTO", "DATA", "GODZINY", "STATUS"]];
+
+    const data = reports.map(el=> [el.report_project, el.report_who, el.report_from, el.report_hours, el.report_status]);
+
+    let content = {
+      startY: 50,
+      head: headers,
+      body: data
+    };
+
+    doc.text(title, marginLeft, 40);
+    doc.autoTable(content);
+    doc.save("raport.pdf")
+  }
+
   return (
     <Container>
       <Button type="submit" variant="warning" className="mb-3" onClick={() => acceptAll()}>AKCEPTUJ WSZYSTKIE NIEZWERYFIKOWANE</Button>
+      <div>
+        <Button variant="info" onClick={() => exportPDF()} className="mb-3">Generuj Report</Button>
+      </div>
         <Row>
             <Col xs={9}>
       <FilterableTable
@@ -91,7 +122,6 @@ const Table = ({reports, redirect}) => {
       })}
       </Col>
       </Row>
-      <PDF reports={reports}/>
     </Container>
   );
 };
