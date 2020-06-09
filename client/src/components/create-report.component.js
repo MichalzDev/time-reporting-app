@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 import axios from "axios";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
@@ -140,51 +141,52 @@ class CreateReport extends Component {
   }
   render() {
     return (
-      <div style={{ marginTop: 20 }}>
-        <h3>Nowy Raport</h3>
-        <Form onSubmit={this.onSubmit}>
-          <Form.Label>Kto: </Form.Label>
-          <Form.Control
-            as="select"
-            value={this.state.report_who}
-            onChange={this.onChangeReportWho}
-          >
-            {this.props.user.permission === "user" ? (
-              <option>{this.props.user.name}</option>
-            ) : (
-              this.userList()
-            )}
-          </Form.Control>
-          <Form.Label>Projekt: </Form.Label>
-          <Form.Control as="select" onChange={this.onChangeReportProject}>
-            <option value="none" selected disabled>
-              Wybierz Projekt
-            </option>
-            {this.projectList()}
-          </Form.Control>
-          <Form.Group>
-            <Form.Row>
-              <Col>
-                <Form.Label>Miesiąc: </Form.Label>
-                <br></br>
-                <Form.Control as="select" onChange={this.onChangeReportFrom}>
-                  <option value="none" selected disabled>
-                    Wybierz Miesiąc
-                  </option>
-                  <option value="Styczeń">Styczeń</option>
-                  <option value="Luty">Luty</option>
-                  <option value="Marzec">Marzec</option>
-                  <option value="Kwiecień">Kwiecień</option>
-                  <option value="Maj">Maj</option>
-                  <option value="Czerwiec">Czerwiec</option>
-                  <option value="Lipiec">Lipiec</option>
-                  <option value="Sierpień">Sierpień</option>
-                  <option value="Wrzesień">Wrzesień</option>
-                  <option value="Październik">Październik</option>
-                  <option value="Listopad">Listopad</option>
-                  <option value="Grudzień">Grudzień</option>
-                </Form.Control>
-                {/* <DayPickerInput
+      <Container>
+        <div style={{ marginTop: 20 }}>
+          <h3>Nowy Raport</h3>
+          <Form onSubmit={this.onSubmit}>
+            <Form.Label>Kto: </Form.Label>
+            <Form.Control
+              as="select"
+              value={this.state.report_who}
+              onChange={this.onChangeReportWho}
+            >
+              {this.props.user.permission === "user" ? (
+                <option>{this.props.user.name}</option>
+              ) : (
+                this.userList()
+              )}
+            </Form.Control>
+            <Form.Label>Projekt: </Form.Label>
+            <Form.Control as="select" onChange={this.onChangeReportProject}>
+              <option value="none" selected disabled>
+                Wybierz Projekt
+              </option>
+              {this.projectList()}
+            </Form.Control>
+            <Form.Group>
+              <Form.Row>
+                <Col>
+                  <Form.Label>Miesiąc: </Form.Label>
+                  <br></br>
+                  <Form.Control as="select" onChange={this.onChangeReportFrom}>
+                    <option value="none" selected disabled>
+                      Wybierz Miesiąc
+                    </option>
+                    <option value="Styczeń">Styczeń</option>
+                    <option value="Luty">Luty</option>
+                    <option value="Marzec">Marzec</option>
+                    <option value="Kwiecień">Kwiecień</option>
+                    <option value="Maj">Maj</option>
+                    <option value="Czerwiec">Czerwiec</option>
+                    <option value="Lipiec">Lipiec</option>
+                    <option value="Sierpień">Sierpień</option>
+                    <option value="Wrzesień">Wrzesień</option>
+                    <option value="Październik">Październik</option>
+                    <option value="Listopad">Listopad</option>
+                    <option value="Grudzień">Grudzień</option>
+                  </Form.Control>
+                  {/* <DayPickerInput
                   formatDate={formatDate}
                   parseDate={parseDate}
                   format="L"
@@ -195,38 +197,39 @@ class CreateReport extends Component {
                   }}
                   onChange={this.onChangeReportFrom}
                 /> */}
-              </Col>
-              <Col>
-                <Form.Label>Ilość Godzin: </Form.Label>
-                <Form.Control
-                  type="number"
-                  value={this.state.report_hours}
-                  onChange={this.onChangeReportHours}
-                  min="1"
-                ></Form.Control>
-              </Col>
-            </Form.Row>
-          </Form.Group>
+                </Col>
+                <Col>
+                  <Form.Label>Ilość Godzin: </Form.Label>
+                  <Form.Control
+                    type="number"
+                    value={this.state.report_hours}
+                    onChange={this.onChangeReportHours}
+                    min="1"
+                  ></Form.Control>
+                </Col>
+              </Form.Row>
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Row>
-              <Col>
-                <Button variant="primary" type="submit">
-                  Stwórz
-                </Button>
-              </Col>
-              <Col>
-                <Button
-                  variant="danger"
-                  onClick={() => window.location.reload()}
-                >
-                  Anuluj
-                </Button>
-              </Col>
-            </Form.Row>
-          </Form.Group>
-        </Form>
-      </div>
+            <Form.Group>
+              <Form.Row>
+                <Col>
+                  <Button variant="primary" type="submit">
+                    Stwórz
+                  </Button>
+                </Col>
+                <Col>
+                  <Button
+                    variant="danger"
+                    onClick={() => window.location.reload()}
+                  >
+                    Anuluj
+                  </Button>
+                </Col>
+              </Form.Row>
+            </Form.Group>
+          </Form>
+        </div>
+      </Container>
     );
   }
 }
