@@ -64,4 +64,35 @@ router.route("/user/:name").get(function (req, res) {
   });
 });
 
+
+router.route('/acceptAll').put(function(req, res) {
+  Report.updateMany({report_status: 'not_verified'}, {report_status: 'accepted'}, (err, report) => {
+      if(err) {
+          res.status(404).json('there are no reports for this user');
+      } else {
+          res.json(report);
+      }
+  });
+});
+
+router.route('/acceptOne/:id').put(function(req, res) {
+  Report.findByIdAndUpdate(req.params.id, {report_status: 'accepted'}, (err, report) => {
+      if(err) {
+          res.status(404).json('there are no reports for this user');
+      } else {
+          res.json(report);
+      }
+  });
+});
+
+router.route('/rejectOne/:id').put(function(req, res) {
+  Report.findByIdAndUpdate(req.params.id, {report_status: 'rejected'}, (err, report) => {
+      if(err) {
+          res.status(404).json('there are no reports for this user');
+      } else {
+          res.json(report);
+      }
+  });
+});
+
 module.exports = router;
