@@ -5,7 +5,11 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
-
+import MomentLocaleUtils, {
+  formatDate,
+  parseDate,
+} from "react-day-picker/moment";
+import "moment/locale/pl";
 const OptionProject = (props) => <option>{props.report.project_name}</option>;
 const OptionUser = (props) => <option>{props.user.user_name}</option>;
 class CreateReport extends Component {
@@ -48,7 +52,6 @@ class CreateReport extends Component {
       });
     console.log(this.data_who);
   }
-
   onChangeReportWho(e) {
     this.setState({
       report_who: e.target.value,
@@ -108,6 +111,7 @@ class CreateReport extends Component {
       data_project: [],
     });
   }
+
   projectList() {
     return this.state.data_project.map((el) => {
       return (
@@ -130,11 +134,7 @@ class CreateReport extends Component {
             <option value="none" selected disabled>
               Wybierz Użytkownika
             </option>
-            {this.props.name ? (
-              <option>{this.props.name}</option>
-            ) : (
-              this.userList()
-            )}
+            {this.userList()}
           </Form.Control>
           <Form.Label>Project: </Form.Label>
           <Form.Control as="select" onChange={this.onChangeReportProject}>
@@ -148,9 +148,16 @@ class CreateReport extends Component {
               <Col>
                 <Form.Label>Data: </Form.Label>
                 <DayPickerInput
-                  value={this.state.report_from}
-                  onDayChange={this.onChangeReportFrom}
-                ></DayPickerInput>
+                  formatDate={formatDate}
+                  parseDate={parseDate}
+                  format="LL"
+                  value={`${formatDate(new Date(), "L", "pl")}`}
+                  dayPickerProps={{
+                    locale: "pl",
+                    localeUtils: MomentLocaleUtils,
+                  }}
+                  onChange={this.onChangeReportFrom}
+                />
               </Col>
               <Col>
                 <Form.Label>Ilość Godzin: </Form.Label>
