@@ -206,14 +206,21 @@ class CreateReport extends Component {
           <Form.Group>
             <Form.Row>
               <Col>
+<<<<<<< HEAD
                 <Button variant="primary" type="submit">
+=======
+                <Button
+                  variant="primary"
+                  type="submit"
+                >
+>>>>>>> aa42d11a49acf40ec1ed9d36ec97e0a16329f276
                   Stwórz
                 </Button>
               </Col>
               <Col>
                 <Button
                   variant="danger"
-                  onClick={() => this.props.history.push("/")}
+                  onClick={() => window.location.reload()}
                 >
                   Anuluj
                 </Button>

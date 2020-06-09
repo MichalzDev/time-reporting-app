@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+
 const User = (props) => (
   <tr>
     {/* <td>{props.user._id}</td> */}
@@ -98,6 +100,12 @@ class ReadUser extends Component {
           </thead>
           <tbody>{this.userList()}</tbody>
         </Table>
+        <Button
+                  variant="danger"
+                  onClick={() => window.location.reload()}
+                >
+                  Wyjdz
+                </Button>
       </div>
     );
   }

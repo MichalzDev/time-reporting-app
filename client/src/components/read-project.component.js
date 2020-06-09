@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
+import Button from "react-bootstrap/Button";
+
 const Project = (props) => (
   <tr>
     <td>{props.project.project_name}</td>
@@ -88,6 +90,12 @@ class ReadProject extends Component {
           </thead>
           <tbody>{this.projectList()}</tbody>
         </Table>
+        <Button
+                  variant="danger"
+                  onClick={() => window.location.reload()}
+                >
+                  Wyjdz
+                </Button>
       </div>
     );
   }
