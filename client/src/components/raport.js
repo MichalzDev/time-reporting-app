@@ -47,6 +47,16 @@ export default function SimpleTable({ reports, redirect }) {
                   >
                     EDYTUJ
                   </button>
+                  <button
+                    onClick={() => {
+                      fetch("http://localhost:5000/reports/delete/" + row._id, {
+                        method: "DELETE",
+                      });
+                      redirect("/reports");
+                    }}
+                  >
+                    USUN
+                  </button>
                 </TableCell>
               </TableRow>
             ) : row.report_status == "rejected" ? (
@@ -65,6 +75,16 @@ export default function SimpleTable({ reports, redirect }) {
                   >
                     EDYTUJ
                   </button>
+                  <button
+                    onClick={() => {
+                      fetch("http://localhost:5000/reports/delete/" + row._id, {
+                        method: "DELETE",
+                      });
+                      redirect("/reports");
+                    }}
+                  >
+                    USUN
+                  </button>
                 </TableCell>
               </TableRow>
             ) : (
@@ -82,6 +102,16 @@ export default function SimpleTable({ reports, redirect }) {
                     }
                   >
                     EDYTUJ
+                  </button>
+                  <button
+                    onClick={() => {
+                      fetch("http://localhost:5000/reports/delete/" + row._id, {
+                        method: "DELETE",
+                      });
+                      redirect("/reports");
+                    }}
+                  >
+                    USUN
                   </button>
                 </TableCell>
               </TableRow>
