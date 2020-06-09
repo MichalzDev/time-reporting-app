@@ -83,7 +83,7 @@ class CreateProject extends Component {
             <Form.Row>
               <Col>
                 <Button variant="primary" type="submit">
-                  Utwórz Project
+                  Stwórz
                 </Button>
               </Col>
               <Col>

@@ -64,7 +64,7 @@ class CreateReport extends Component {
   }
   onChangeReportFrom(e) {
     this.setState({
-      report_from: e.toLocaleDateString(),
+      report_from: e.target.values,
     });
   }
   onChangeReportStatus(e) {
@@ -136,7 +136,7 @@ class CreateReport extends Component {
             </option>
             {this.userList()}
           </Form.Control>
-          <Form.Label>Project: </Form.Label>
+          <Form.Label>Projekt: </Form.Label>
           <Form.Control as="select" onChange={this.onChangeReportProject}>
             <option value="none" selected disabled>
               Wybierz Projekt
@@ -147,10 +147,11 @@ class CreateReport extends Component {
             <Form.Row>
               <Col>
                 <Form.Label>Data: </Form.Label>
+                <br></br>
                 <DayPickerInput
                   formatDate={formatDate}
                   parseDate={parseDate}
-                  format="LL"
+                  format="L"
                   value={`${formatDate(new Date(), "L", "pl")}`}
                   dayPickerProps={{
                     locale: "pl",
@@ -174,7 +175,7 @@ class CreateReport extends Component {
             <Form.Row>
               <Col>
                 <Button variant="primary" type="submit">
-                  Stwórz Report
+                  Stwórz
                 </Button>
               </Col>
               <Col>

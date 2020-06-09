@@ -11,14 +11,14 @@ const Report = (props) => (
     <td>{props.report.report_hours}</td>
     <td>{props.report.report_status}</td>
     <td>
-      <Link to={"/reports/edit/" + props.report._id}>Edit </Link>
+      <Link to={"/reports/edit/" + props.report._id}>Edytuj </Link>
       <a
         href="/reports"
         onClick={() => {
           props.deleteReport(props.report._id);
         }}
       >
-        Delete
+        Usuń
       </a>
     </td>
   </tr>
@@ -89,16 +89,16 @@ class ReadReport extends Component {
   render() {
     return (
       <div>
-        <h3>Reports List</h3>
+        <h3>Lista Raportów</h3>
         <Table striped bordered hover style={{ marginTop: 20 }}>
           <thead>
             <tr>
-              <th>Who</th>
-              <th>Project</th>
-              <th>From</th>
-              <th>Hours</th>
+              <th>Kto</th>
+              <th>Projekt</th>
+              <th>Data</th>
+              <th>Ilość Godzin</th>
               <th>Status</th>
-              <th>Actions</th>
+              <th>Akcje</th>
             </tr>
           </thead>
           <tbody>{this.reportList()}</tbody>

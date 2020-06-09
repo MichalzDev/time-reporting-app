@@ -5,7 +5,11 @@ import Col from "react-bootstrap/Col";
 import axios from "axios";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
-
+import MomentLocaleUtils, {
+  formatDate,
+  parseDate,
+} from "react-day-picker/moment";
+import "moment/locale/pl";
 const OptionProject = (props) => <option>{props.project.project_name}</option>;
 const OptionUser = (props) => <option>{props.user.user_name}</option>;
 class EditReport extends Component {
@@ -78,7 +82,7 @@ class EditReport extends Component {
   }
   onChangeReportFrom(e) {
     this.setState({
-      report_from: e.toLocaleDateString(),
+      report_from: e.target.value,
     });
   }
   onChangeReportStatus(e) {
@@ -133,7 +137,11 @@ class EditReport extends Component {
   projectList() {
     return this.state.data_project.map((el) => {
       return (
-        <OptionUser project={el} key={el._id} value={el.name}></OptionUser>
+        <OptionProject
+          project={el}
+          key={el._id}
+          value={el.name}
+        ></OptionProject>
       );
     });
   }
@@ -142,9 +150,9 @@ class EditReport extends Component {
     console.log(this.state);
     return (
       <div style={{ marginTop: 20 }}>
-        <h3>Edit Report</h3>
+        <h3>Edytuj Raport</h3>
         <Form onSubmit={this.onSubmit}>
-          <Form.Label>Who: </Form.Label>
+          <Form.Label>Kto: </Form.Label>
           <Form.Control
             as="select"
             value={this.state.report_who}
@@ -156,7 +164,7 @@ class EditReport extends Component {
               this.userList()
             )}
           </Form.Control>
-          <Form.Label>Project: </Form.Label>
+          <Form.Label>Projekt: </Form.Label>
           <Form.Control
             as="select"
             value={this.state.report_project}
@@ -177,14 +185,22 @@ class EditReport extends Component {
           <Form.Group>
             <Form.Row>
               <Col>
-                <Form.Label>From: </Form.Label>
+                <Form.Label>Data: </Form.Label>
+                <br></br>
                 <DayPickerInput
-                  value={this.state.report_from}
-                  onDayChange={this.onChangeReportFrom}
-                ></DayPickerInput>
+                  formatDate={formatDate}
+                  parseDate={parseDate}
+                  format="L"
+                  value={`${formatDate(this.state.report_from, "L", "pl")}`}
+                  dayPickerProps={{
+                    locale: "pl",
+                    localeUtils: MomentLocaleUtils,
+                  }}
+                  onChange={this.onChangeReportFrom}
+                />
               </Col>
               <Col>
-                <Form.Label>Hours: </Form.Label>
+                <Form.Label>Ilość Godzin: </Form.Label>
                 <Form.Control
                   type="number"
                   value={this.state.report_hours}
@@ -198,7 +214,7 @@ class EditReport extends Component {
             <Form.Row>
               <Col>
                 <Button variant="primary" type="submit">
-                  Edit Report
+                  Edytuj
                 </Button>
               </Col>
               <Col>
@@ -206,7 +222,7 @@ class EditReport extends Component {
                   variant="danger"
                   onClick={() => this.props.history.push("/reports")}
                 >
-                  Cancel
+                  Anuluj
                 </Button>
               </Col>
             </Form.Row>

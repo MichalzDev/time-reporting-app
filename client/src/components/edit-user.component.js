@@ -115,10 +115,10 @@ class EditUser extends Component {
   render() {
     return (
       <div style={{ marginTop: 20 }}>
-        <h3>Edit User</h3>
+        <h3>Edytuj Użytkownika</h3>
         <Form onSubmit={this.onSubmit}>
           <Form.Group>
-            <Form.Label>Name: </Form.Label>
+            <Form.Label>Nazwa: </Form.Label>
             <Form.Control
               type="text"
               value={this.state.user_name}
@@ -134,7 +134,7 @@ class EditUser extends Component {
                 ></Form.Control>
               </Col>
               <Col>
-                <Form.Label>Password: </Form.Label>
+                <Form.Label>Hasło: </Form.Label>
                 <Form.Control
                   type="password"
                   value={this.state.user_password}
@@ -142,7 +142,7 @@ class EditUser extends Component {
                 ></Form.Control>
               </Col>
             </Form.Row>
-            <Form.Label>Role: </Form.Label>
+            <Form.Label>Rola: </Form.Label>
             <Form.Control
               type="text"
               value={this.state.user_role}
@@ -185,7 +185,7 @@ class EditUser extends Component {
             <Form.Row>
               <Col>
                 <Button variant="primary" type="submit">
-                  Edit User
+                  Edytuj
                 </Button>
               </Col>
               <Col>
@@ -193,7 +193,7 @@ class EditUser extends Component {
                   variant="danger"
                   onClick={() => this.props.history.push("/users")}
                 >
-                  Cancel
+                  Anuluj
                 </Button>
               </Col>
             </Form.Row>

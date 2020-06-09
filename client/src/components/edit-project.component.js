@@ -69,12 +69,12 @@ class EditProject extends Component {
   render() {
     return (
       <div style={{ marginTop: 20 }}>
-        <h3>Edit Project</h3>
+        <h3>Edytuj Project</h3>
         <Form onSubmit={this.onSubmit}>
           <Form.Group>
             <Form.Row>
               <Col>
-                <Form.Label>Name: </Form.Label>
+                <Form.Label>Nazwa: </Form.Label>
                 <Form.Control
                   type="text"
                   value={this.state.project_name}
@@ -82,7 +82,7 @@ class EditProject extends Component {
                 ></Form.Control>
               </Col>
               <Col>
-                <Form.Label>Members: </Form.Label>
+                <Form.Label>Opis: </Form.Label>
                 <Form.Control
                   type="text"
                   value={this.state.project_members}
@@ -95,7 +95,7 @@ class EditProject extends Component {
             <Form.Row>
               <Col>
                 <Button variant="primary" type="submit">
-                  Edit Project
+                  Edytuj
                 </Button>
               </Col>
               <Col>
@@ -103,7 +103,7 @@ class EditProject extends Component {
                   variant="danger"
                   onClick={() => this.props.history.push("/projects")}
                 >
-                  Cancel
+                  Anuluj
                 </Button>
               </Col>
             </Form.Row>

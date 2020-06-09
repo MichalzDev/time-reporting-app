@@ -21,7 +21,7 @@ import EditProject from "./edit-project.component";
 import CreateReport from "./create-report.component";
 import ReadReport from "./read-report.component";
 import EditReport from "./edit-report.component";
-import Raport from './raport';
+import Raport from "./raport";
 
 class Admin extends Component {
   state = {
@@ -43,36 +43,36 @@ class Admin extends Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     return (
       <Router>
         <Container>
           <Navbar bg="light" expand="lg">
-            <Navbar.Brand>Control panel</Navbar.Brand>
+            <Navbar.Brand>Panel Nawigacyjny</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <NavDropdown title="Users" id="basic-nav-dropdown">
                 <NavDropdown.Item>
-                  <Link to="/users">Users List</Link>
+                  <Link to="/users">Lista Użytkowników</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/users/create">Create User</Link>
+                  <Link to="/users/create">Stwórz Użytkownika</Link>
                 </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Projects" id="basic-nav-dropdown">
                 <NavDropdown.Item>
-                  <Link to="/projects">Projects List</Link>
+                  <Link to="/projects">Lista Projektów</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/projects/create">Create Project</Link>
+                  <Link to="/projects/create">Stwórz Projekt</Link>
                 </NavDropdown.Item>
               </NavDropdown>
               <NavDropdown title="Reports" id="basic-nav-dropdown">
                 <NavDropdown.Item>
-                  <Link to="/reports">Reports List</Link>
+                  <Link to="/reports">Lista Raportów</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link to="/report/create">Create Report</Link>
+                  <Link to="/report/create">Stwórz Raport</Link>
                 </NavDropdown.Item>
               </NavDropdown>
               <Button
@@ -97,7 +97,11 @@ class Admin extends Component {
           <Route
             path="/reports"
             render={(props) => (
-              <Raport {...props} redirect={this.props.redirect} reports={this.state.reports}/>
+              <Raport
+                {...props}
+                redirect={this.props.redirect}
+                reports={this.state.reports}
+              />
             )}
           />
           <Route path="/report/create" exact component={CreateReport} />

@@ -99,7 +99,7 @@ class CreateUser extends Component {
   render() {
     return (
       <div style={{ marginTop: 20 }}>
-        <h3>Stwórz Nowego Urzytkownika</h3>
+        <h3>Stwórz Nowego Użytkownika</h3>
         <Form onSubmit={this.onSubmit}>
           <Form.Group>
             <Form.Label>Imię: </Form.Label>
@@ -169,7 +169,7 @@ class CreateUser extends Component {
             <Form.Row>
               <Col>
                 <Button variant="primary" type="submit">
-                  Utwórz Urzytkownika
+                  Stwórz
                 </Button>
               </Col>
               <Col>
