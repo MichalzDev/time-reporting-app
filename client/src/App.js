@@ -23,6 +23,7 @@ import ReadReport from "./components/read-report.component";
 import EditReport from "./components/edit-report.component";
 import Admin from "./components/admin";
 import User from './components/user';
+import Supervisor from './components/supervisor';
 
 class App extends Component {
   state = {
@@ -121,7 +122,18 @@ class App extends Component {
 <Route path={"/reports/edit/" + this.state.id} render={(props) => (
             <EditReport {...props} name={this.state.name} reportId={this.state.id}/>
           )} />
+                              <Route
+            path="/supervisor"
+            render={(props) => (
+              <Supervisor
+                {...props}
+                redirect={this.redirect}
+                user={this.state}
+              />
+            )}
+          />
         </Router>
+
       );
     }
     return (

@@ -29,12 +29,12 @@ export default function SimpleTable({reports, redirect}) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {reports.map((row) => (
-            <TableRow key={row.report_who}>
+          {reports.map((row, index) => (
+            <TableRow key={index}>
               <TableCell component="th" scope="row">
                 {row.report_who}
               </TableCell>
-              <TableCell align="right">{row.report_from.slice(8,10) + '-' + row.report_from.slice(0,4)}</TableCell>
+              <TableCell align="right">{row.report_from}</TableCell>
               <TableCell align="right">{row.report_hours}</TableCell>
               <TableCell align="right"><button onClick={() => redirect('/reports/edit/' + row._id, row._id)}>EDYTUJ</button></TableCell>
             </TableRow>

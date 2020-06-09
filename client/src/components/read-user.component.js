@@ -83,7 +83,7 @@ class ReadUser extends Component {
   render() {
     return (
       <div>
-        <h3>Lista Urzytkowników</h3>
+        <h3>Lista Uzytkowników</h3>
         <Table striped bordered hover style={{ marginTop: 20 }}>
           <thead>
             <tr>
