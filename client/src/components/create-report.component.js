@@ -38,7 +38,7 @@ class CreateReport extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      report_who: "",
+      report_who: this.props.user.permission === "user" ? this.props.user.name : "",
       report_project: "",
       report_from: "",
       report_hours: "",
