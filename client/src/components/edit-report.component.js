@@ -147,7 +147,6 @@ class EditReport extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <div style={{ marginTop: 20 }}>
         <h3>Edytuj Raport</h3>
@@ -158,7 +157,7 @@ class EditReport extends Component {
             value={this.state.report_who}
             onChange={this.onChangeReportWho}
           >
-            {this.props.name ? (
+            {this.props.permission === "user" ? (
               <option>{this.props.name}</option>
             ) : (
               this.userList()
