@@ -149,8 +149,8 @@ class CreateReport extends Component {
             value={this.state.report_who}
             onChange={this.onChangeReportWho}
           >
-            {this.props.permission === "user" ? (
-              <option>{this.props.name}</option>
+            {this.props.user.permission === "user" ? (
+              <option>{this.props.user.name}</option>
             ) : (
               this.userList()
             )}

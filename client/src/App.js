@@ -109,7 +109,7 @@ class App extends Component {
           <Route
             path={"/reports/create/" + this.state.name}
             render={(props) => (
-              <CreateReport {...props} name={this.state.name} />
+              <CreateReport {...props} user={this.state} />
             )}
           />
 
