@@ -116,7 +116,7 @@ class CreateReport extends Component {
     this.props.history.push("/reports");
 
     this.setState({
-      report_who: "",
+      report_who: this.props.user.permission === "user" ? this.props.user.name : "",
       report_project: "",
       report_from: "",
       report_hours: "",
