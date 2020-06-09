@@ -50,7 +50,7 @@ class User extends Component {
               <Button
                 variant="secondary"
                 className="m-2"
-                onClick={() => this.props.redirect("/reports/user/" + this.props.user.name)}
+                onClick={() => window.location.reload()}
               >
                 Moje raporty
               </Button>
