@@ -2,9 +2,12 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Table from "react-bootstrap/Table";
-
+const tdStyle = {
+  backgroundColor: "green",
+  textAlign: "center",
+};
 const Report = (props) => (
-  <tr>
+  <tr style={tdStyle}>
     <td>{props.report.report_who}</td>
     <td>{props.report.report_project}</td>
     <td>{props.report.report_from}</td>
@@ -95,7 +98,7 @@ class ReadReport extends Component {
             <tr>
               <th>Kto</th>
               <th>Projekt</th>
-              <th>Data</th>
+              <th>Miesiąc</th>
               <th>Ilość Godzin</th>
               <th>Status</th>
               <th>Akcje</th>

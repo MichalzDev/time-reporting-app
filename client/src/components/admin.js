@@ -51,7 +51,7 @@ class Admin extends Component {
             <Navbar.Brand>Panel Nawigacyjny</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-              <NavDropdown title="Users" id="basic-nav-dropdown">
+              <NavDropdown title="Użytkownicy" id="basic-nav-dropdown">
                 <NavDropdown.Item>
                   <Link to="/users">Lista Użytkowników</Link>
                 </NavDropdown.Item>
@@ -59,7 +59,7 @@ class Admin extends Component {
                   <Link to="/users/create">Stwórz Użytkownika</Link>
                 </NavDropdown.Item>
               </NavDropdown>
-              <NavDropdown title="Projects" id="basic-nav-dropdown">
+              <NavDropdown title="Projekty" id="basic-nav-dropdown">
                 <NavDropdown.Item>
                   <Link to="/projects">Lista Projektów</Link>
                 </NavDropdown.Item>
@@ -67,7 +67,7 @@ class Admin extends Component {
                   <Link to="/projects/create">Stwórz Projekt</Link>
                 </NavDropdown.Item>
               </NavDropdown>
-              <NavDropdown title="Reports" id="basic-nav-dropdown">
+              <NavDropdown title="Raporty" id="basic-nav-dropdown">
                 <NavDropdown.Item>
                   <Link to="/reports">Lista Raportów</Link>
                 </NavDropdown.Item>

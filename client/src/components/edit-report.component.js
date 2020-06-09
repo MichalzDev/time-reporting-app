@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 import axios from "axios";
 import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
@@ -12,6 +13,20 @@ import MomentLocaleUtils, {
 import "moment/locale/pl";
 const OptionProject = (props) => <option>{props.project.project_name}</option>;
 const OptionUser = (props) => <option>{props.user.user_name}</option>;
+const MONTHS = [
+  "Styczeń",
+  "Luty",
+  "Marzec",
+  "Kwiecień",
+  "Maj",
+  "Czerwiec",
+  "Lipiec",
+  "Sierpień",
+  "Wrzesień",
+  "Październik",
+  "Listopad",
+  "Grudzień",
+];
 class EditReport extends Component {
   _isMounted = false;
   constructor(props) {
@@ -148,45 +163,64 @@ class EditReport extends Component {
 
   render() {
     return (
-      <div style={{ marginTop: 20 }}>
-        <h3>Edytuj Raport</h3>
-        <Form onSubmit={this.onSubmit}>
-          <Form.Label>Kto: </Form.Label>
-          <Form.Control
-            as="select"
-            value={this.state.report_who}
-            onChange={this.onChangeReportWho}
-          >
-            {this.props.permission === "user" ? (
-              <option>{this.props.name}</option>
-            ) : (
-              this.userList()
-            )}
-          </Form.Control>
-          <Form.Label>Projekt: </Form.Label>
-          <Form.Control
-            as="select"
-            value={this.state.report_project}
-            onChange={this.onChangeReportProject}
-          >
-            {this.projectList()}
-          </Form.Control>
-          <Form.Label>Status: </Form.Label>
-          <Form.Control
-            as="select"
-            value={this.state.report_status}
-            onChange={this.onChangeReportStatus}
-          >
-            <option value="not_verified">Nie zweryfikowano</option>
-            <option value="accepted">Zaakceptowano</option>
-            <option value="rejected">Odrzucono</option>
-          </Form.Control>
-          <Form.Group>
-            <Form.Row>
-              <Col>
-                <Form.Label>Data: </Form.Label>
-                <br></br>
-                <DayPickerInput
+      <Container>
+        <div style={{ marginTop: 20 }}>
+          <h3>Edytuj Raport</h3>
+          <Form onSubmit={this.onSubmit}>
+            <Form.Label>Kto: </Form.Label>
+            <Form.Control
+              as="select"
+              value={this.state.report_who}
+              onChange={this.onChangeReportWho}
+            >
+              {this.props.permission === "user" ? (
+                <option>{this.props.name}</option>
+              ) : (
+                this.userList()
+              )}
+            </Form.Control>
+            <Form.Label>Projekt: </Form.Label>
+            <Form.Control
+              as="select"
+              value={this.state.report_project}
+              onChange={this.onChangeReportProject}
+            >
+              {this.projectList()}
+            </Form.Control>
+            <Form.Label>Status: </Form.Label>
+            <Form.Control
+              as="select"
+              value={this.state.report_status}
+              onChange={this.onChangeReportStatus}
+            >
+              <option value="not_verified">Nie zweryfikowano</option>
+              <option value="accepted">Zaakceptowano</option>
+              <option value="rejected">Odrzucono</option>
+            </Form.Control>
+            <Form.Group>
+              <Form.Row>
+                <Col>
+                  <Form.Label>Miesiąc: </Form.Label>
+                  <br></br>
+                  <Form.Control
+                    as="select"
+                    value={this.state.report_from}
+                    onChange={this.onChangeReportFrom}
+                  >
+                    <option value="Styczeń">Styczeń</option>
+                    <option value="Luty">Luty</option>
+                    <option value="Marzec">Marzec</option>
+                    <option value="Kwiecień">Kwiecień</option>
+                    <option value="Maj">Maj</option>
+                    <option value="Czerwiec">Czerwiec</option>
+                    <option value="Lipiec">Lipiec</option>
+                    <option value="Sierpień">Sierpień</option>
+                    <option value="Wrzesień">Wrzesień</option>
+                    <option value="Październik">Październik</option>
+                    <option value="Listopad">Listopad</option>
+                    <option value="Grudzień">Grudzień</option>
+                  </Form.Control>
+                  {/* <DayPickerInput
                   formatDate={formatDate}
                   parseDate={parseDate}
                   format="L"
@@ -196,38 +230,40 @@ class EditReport extends Component {
                     localeUtils: MomentLocaleUtils,
                   }}
                   onChange={this.onChangeReportFrom}
-                />
-              </Col>
-              <Col>
-                <Form.Label>Ilość Godzin: </Form.Label>
-                <Form.Control
-                  type="number"
-                  value={this.state.report_hours}
-                  onChange={this.onChangeReportHours}
-                ></Form.Control>
-              </Col>
-            </Form.Row>
-          </Form.Group>
+                /> */}
+                </Col>
+                <Col>
+                  <Form.Label>Ilość Godzin: </Form.Label>
+                  <Form.Control
+                    type="number"
+                    value={this.state.report_hours}
+                    onChange={this.onChangeReportHours}
+                    min="1"
+                  ></Form.Control>
+                </Col>
+              </Form.Row>
+            </Form.Group>
 
-          <Form.Group>
-            <Form.Row>
-              <Col>
-                <Button variant="primary" type="submit">
-                  Edytuj
-                </Button>
-              </Col>
-              <Col>
-                <Button
-                  variant="danger"
-                  onClick={() => this.props.history.push("/reports")}
-                >
-                  Anuluj
-                </Button>
-              </Col>
-            </Form.Row>
-          </Form.Group>
-        </Form>
-      </div>
+            <Form.Group>
+              <Form.Row>
+                <Col>
+                  <Button variant="primary" type="submit">
+                    Edytuj
+                  </Button>
+                </Col>
+                <Col>
+                  <Button
+                    variant="danger"
+                    onClick={() => this.props.history.push("/reports")}
+                  >
+                    Anuluj
+                  </Button>
+                </Col>
+              </Form.Row>
+            </Form.Group>
+          </Form>
+        </div>
+      </Container>
     );
   }
 }

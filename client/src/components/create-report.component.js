@@ -12,6 +12,20 @@ import MomentLocaleUtils, {
 import "moment/locale/pl";
 const OptionProject = (props) => <option>{props.report.project_name}</option>;
 const OptionUser = (props) => <option>{props.user.user_name}</option>;
+const MONTHS = [
+  "Styczeń",
+  "Luty",
+  "Marzec",
+  "Kwiecień",
+  "Maj",
+  "Czerwiec",
+  "Lipiec",
+  "Sierpień",
+  "Wrzesień",
+  "Październik",
+  "Listopad",
+  "Grudzień",
+];
 class CreateReport extends Component {
   constructor(props) {
     super(props);
@@ -64,7 +78,7 @@ class CreateReport extends Component {
   }
   onChangeReportFrom(e) {
     this.setState({
-      report_from: e.target.values,
+      report_from: e.target.value,
     });
   }
   onChangeReportStatus(e) {
@@ -146,9 +160,26 @@ class CreateReport extends Component {
           <Form.Group>
             <Form.Row>
               <Col>
-                <Form.Label>Data: </Form.Label>
+                <Form.Label>Miesiąc: </Form.Label>
                 <br></br>
-                <DayPickerInput
+                <Form.Control as="select" onChange={this.onChangeReportFrom}>
+                  <option value="none" selected disabled>
+                    Wybierz Miesiąc
+                  </option>
+                  <option value="Styczeń">Styczeń</option>
+                  <option value="Luty">Luty</option>
+                  <option value="Marzec">Marzec</option>
+                  <option value="Kwiecień">Kwiecień</option>
+                  <option value="Maj">Maj</option>
+                  <option value="Czerwiec">Czerwiec</option>
+                  <option value="Lipiec">Lipiec</option>
+                  <option value="Sierpień">Sierpień</option>
+                  <option value="Wrzesień">Wrzesień</option>
+                  <option value="Październik">Październik</option>
+                  <option value="Listopad">Listopad</option>
+                  <option value="Grudzień">Grudzień</option>
+                </Form.Control>
+                {/* <DayPickerInput
                   formatDate={formatDate}
                   parseDate={parseDate}
                   format="L"
@@ -158,7 +189,7 @@ class CreateReport extends Component {
                     localeUtils: MomentLocaleUtils,
                   }}
                   onChange={this.onChangeReportFrom}
-                />
+                /> */}
               </Col>
               <Col>
                 <Form.Label>Ilość Godzin: </Form.Label>
@@ -166,6 +197,7 @@ class CreateReport extends Component {
                   type="number"
                   value={this.state.report_hours}
                   onChange={this.onChangeReportHours}
+                  min="1"
                 ></Form.Control>
               </Col>
             </Form.Row>
@@ -174,12 +206,19 @@ class CreateReport extends Component {
           <Form.Group>
             <Form.Row>
               <Col>
-                <Button variant="primary" type="submit">
+                <Button
+                  variant="primary"
+                  type="submit"
+                  onClick={() => this.props.history.push("/reports")}
+                >
                   Stwórz
                 </Button>
               </Col>
               <Col>
-                <Button variant="danger" href="/reports">
+                <Button
+                  variant="danger"
+                  onClick={() => this.props.history.push("/")}
+                >
                   Anuluj
                 </Button>
               </Col>

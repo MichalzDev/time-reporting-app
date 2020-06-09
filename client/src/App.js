@@ -140,12 +140,12 @@ class App extends Component {
       <Router>
         <Container>
           {/* <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="/">Panel Nawigacyjny</Navbar.Brand>
+            <Navbar.Brand href="/">Control panel</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <NavDropdown title="Users" id="basic-nav-dropdown">
                 <NavDropdown.Item>
-                  <Link to="/users">Lista Użytkownikó</Link>
+                  <Link to="/users">Lista Użytkowników</Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <Link to="/users/create">Utwórz Użytkownika</Link>
