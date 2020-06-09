@@ -108,9 +108,7 @@ class App extends Component {
           />
           <Route
             path={"/reports/create/" + this.state.name}
-            render={(props) => (
-              <CreateReport {...props} user={this.state} />
-            )}
+            render={(props) => <CreateReport {...props} user={this.state} />}
           />
 
           <Route
@@ -133,7 +131,7 @@ class App extends Component {
               />
             )}
           />
-                    <Route path="/projects" exact component={ReadProject} />
+          <Route path="/projects" exact component={ReadProject} />
           <Route path="/projects/create" exact component={CreateProject} />
           <Route path="/projects/edit/:id" exact component={EditProject} />
         </Router>
