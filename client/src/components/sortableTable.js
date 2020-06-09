@@ -5,10 +5,6 @@ import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
 import "bootstrap/dist/css/bootstrap.min.css";
-<<<<<<< HEAD
-=======
-import PDF from "./pdf";
->>>>>>> aa42d11a49acf40ec1ed9d36ec97e0a16329f276
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import Form from "react-bootstrap/Form";
@@ -16,11 +12,8 @@ import Form from "react-bootstrap/Form";
 const FilterableTable = require("react-filterable-table");
 
 const Table = ({ reports, redirect }) => {
-<<<<<<< HEAD
-=======
   const [month, setMonth] = useState("");
 
->>>>>>> aa42d11a49acf40ec1ed9d36ec97e0a16329f276
   const fields = [
     {
       name: "report_project",
@@ -63,11 +56,7 @@ const Table = ({ reports, redirect }) => {
       method: "PUT",
     });
 
-<<<<<<< HEAD
-    redirect("/supervisor");
-=======
-    window.location.reload()
->>>>>>> aa42d11a49acf40ec1ed9d36ec97e0a16329f276
+    window.location.reload();
   };
 
   const acceptOne = (id) => {
@@ -75,11 +64,7 @@ const Table = ({ reports, redirect }) => {
       method: "PUT",
     });
 
-<<<<<<< HEAD
-    redirect("/supervisor");
-=======
-    window.location.reload()
->>>>>>> aa42d11a49acf40ec1ed9d36ec97e0a16329f276
+    window.location.reload();
   };
 
   const rejectOne = (id) => {
@@ -87,11 +72,7 @@ const Table = ({ reports, redirect }) => {
       method: "PUT",
     });
 
-<<<<<<< HEAD
-    redirect("/supervisor");
-=======
-    window.location.reload()
->>>>>>> aa42d11a49acf40ec1ed9d36ec97e0a16329f276
+    window.location.reload();
   };
 
   const exportPDF = () => {
@@ -107,15 +88,6 @@ const Table = ({ reports, redirect }) => {
     const title = "Raport";
     const headers = [["PROJEKT", "KTO", "DATA", "GODZINY", "STATUS"]];
 
-<<<<<<< HEAD
-    const data = reports.map((el) => [
-      el.report_project,
-      el.report_who,
-      el.report_from,
-      el.report_hours,
-      el.report_status,
-    ]);
-=======
     var data = [];
     if (month === "" || month === "none") {
       data = reports.map((el) => [
@@ -136,7 +108,6 @@ const Table = ({ reports, redirect }) => {
           el.report_status,
         ]);
     }
->>>>>>> aa42d11a49acf40ec1ed9d36ec97e0a16329f276
 
     let content = {
       startY: 50,
@@ -159,13 +130,6 @@ const Table = ({ reports, redirect }) => {
       >
         AKCEPTUJ WSZYSTKIE NIEZWERYFIKOWANE
       </Button>
-<<<<<<< HEAD
-      <div>
-        <Button variant="info" onClick={() => exportPDF()} className="mb-3">
-          Generuj Report
-        </Button>
-      </div>
-=======
       <Row>
         <Button
           variant="info"
@@ -197,7 +161,6 @@ const Table = ({ reports, redirect }) => {
           <option value="Grudzień">Grudzień</option>
         </Form.Control>
       </Row>
->>>>>>> aa42d11a49acf40ec1ed9d36ec97e0a16329f276
       <Row>
         <Col xs={9}>
           <FilterableTable data={reports} fields={fields} />

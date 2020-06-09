@@ -39,25 +39,7 @@ export default function SimpleTable({ reports, redirect }) {
                 <TableCell align="right">{row.report_project}</TableCell>
                 <TableCell align="right">{row.report_from}</TableCell>
                 <TableCell align="right">{row.report_hours}</TableCell>
-                <TableCell align="right">
-                  <button
-                    onClick={() =>
-                      redirect("/reports/edit/" + row._id, row._id)
-                    }
-                  >
-                    EDYTUJ
-                  </button>
-                  <button
-                    onClick={() => {
-                      fetch("http://localhost:5000/reports/delete/" + row._id, {
-                        method: "DELETE",
-                      });
-                      redirect("/reports");
-                    }}
-                  >
-                    USUN
-                  </button>
-                </TableCell>
+                <TableCell align="right"></TableCell>
               </TableRow>
             ) : row.report_status == "rejected" ? (
               <TableRow style={{ backgroundColor: "#ffcccb" }} key={index}>

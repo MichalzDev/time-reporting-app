@@ -143,12 +143,17 @@ class CreateReport extends Component {
       <div style={{ marginTop: 20 }}>
         <h3>Nowy Raport</h3>
         <Form onSubmit={this.onSubmit}>
-          <Form.Label>Who: </Form.Label>
-          <Form.Control as="select" onChange={this.onChangeReportWho}>
-            <option value="none" selected disabled>
-              Wybierz Użytkownika
-            </option>
-            {this.userList()}
+          <Form.Label>Kto: </Form.Label>
+          <Form.Control
+            as="select"
+            value={this.state.report_who}
+            onChange={this.onChangeReportWho}
+          >
+            {this.props.permission === "user" ? (
+              <option>{this.props.name}</option>
+            ) : (
+              this.userList()
+            )}
           </Form.Control>
           <Form.Label>Projekt: </Form.Label>
           <Form.Control as="select" onChange={this.onChangeReportProject}>
@@ -206,14 +211,7 @@ class CreateReport extends Component {
           <Form.Group>
             <Form.Row>
               <Col>
-<<<<<<< HEAD
                 <Button variant="primary" type="submit">
-=======
-                <Button
-                  variant="primary"
-                  type="submit"
-                >
->>>>>>> aa42d11a49acf40ec1ed9d36ec97e0a16329f276
                   Stwórz
                 </Button>
               </Col>
