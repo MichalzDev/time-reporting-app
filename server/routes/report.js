@@ -41,7 +41,7 @@ router.route("/edit/:id").post(function (req, res) {
     report.report_project = req.body.report_project;
     report.report_from = req.body.report_from;
     report.report_hours = req.body.report_hours;
-    report.report_status = req.body.status;
+    report.report_status = req.body.report_status;
 
     report
       .save()
@@ -64,35 +64,46 @@ router.route("/user/:name").get(function (req, res) {
   });
 });
 
-
-router.route('/acceptAll').put(function(req, res) {
-  Report.updateMany({report_status: 'not_verified'}, {report_status: 'accepted'}, (err, report) => {
-      if(err) {
-          res.status(404).json('there are no reports for this user');
+router.route("/acceptAll").put(function (req, res) {
+  Report.updateMany(
+    { report_status: "not_verified" },
+    { report_status: "accepted" },
+    (err, report) => {
+      if (err) {
+        res.status(404).json("there are no reports for this user");
       } else {
-          res.json(report);
+        res.json(report);
       }
-  });
+    }
+  );
 });
 
-router.route('/acceptOne/:id').put(function(req, res) {
-  Report.findByIdAndUpdate(req.params.id, {report_status: 'accepted'}, (err, report) => {
-      if(err) {
-          res.status(404).json('there are no reports for this user');
+router.route("/acceptOne/:id").put(function (req, res) {
+  Report.findByIdAndUpdate(
+    req.params.id,
+    { report_status: "accepted" },
+    (err, report) => {
+      if (err) {
+        res.status(404).json("there are no reports for this user");
       } else {
-          res.json(report);
+        res.json(report);
       }
-  });
+    }
+  );
 });
 
-router.route('/rejectOne/:id').put(function(req, res) {
-  Report.findByIdAndUpdate(req.params.id, {report_status: 'rejected'}, (err, report) => {
-      if(err) {
-          res.status(404).json('there are no reports for this user');
+router.route("/rejectOne/:id").put(function (req, res) {
+  Report.findByIdAndUpdate(
+    req.params.id,
+    { report_status: "rejected" },
+    (err, report) => {
+      if (err) {
+        res.status(404).json("there are no reports for this user");
       } else {
-          res.json(report);
+        res.json(report);
       }
-  });
+    }
+  );
 });
 
 module.exports = router;

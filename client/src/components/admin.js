@@ -106,6 +106,16 @@ class Admin extends Component {
           />
           <Route path="/report/create" exact component={CreateReport} />
           <Route path="/reports/edit/:id" exact component={EditReport} />
+          <div style={{ textAlign: "center", marginTop: "20px" }}>
+            <h5>
+              <Link to="/users"> Lista Użytkowników </Link> |
+              <Link to="/users/create"> Dodaj Użytkownika </Link> |
+              <Link to="/projects"> Lista Projektów </Link> |
+              <Link to="/projects/create"> Dodaj Projekt </Link> |
+              <Link to="/reports/"> Lista Raportów </Link> |
+              <Link to="/report/create/"> Dodaj Raport </Link>
+            </h5>
+          </div>
         </Container>
       </Router>
     );

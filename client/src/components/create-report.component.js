@@ -206,11 +206,7 @@ class CreateReport extends Component {
           <Form.Group>
             <Form.Row>
               <Col>
-                <Button
-                  variant="primary"
-                  type="submit"
-                  onClick={() => this.props.history.push("/reports")}
-                >
+                <Button variant="primary" type="submit">
                   Stwórz
                 </Button>
               </Col>
