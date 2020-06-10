@@ -32,18 +32,13 @@ class CreateProject extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log("Form submitted");
-    console.log(`Project Name: ${this.state.project_name}`);
-    console.log(`Project Members: ${this.state.project_members}`);
 
     const newProject = {
       project_name: this.state.project_name,
       project_members: this.state.project_members,
     };
 
-    axios
-      .post("http://localhost:5000/projects/create", newProject)
-      .then((res) => console.log(res.data));
+    axios.post("http://localhost:5000/projects/create", newProject);
 
     this.props.history.push("/projects");
 

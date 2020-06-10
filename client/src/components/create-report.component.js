@@ -4,29 +4,12 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
-import DayPickerInput from "react-day-picker/DayPickerInput";
 import "react-day-picker/lib/style.css";
-import MomentLocaleUtils, {
-  formatDate,
-  parseDate,
-} from "react-day-picker/moment";
 import "moment/locale/pl";
+
 const OptionProject = (props) => <option>{props.report.project_name}</option>;
 const OptionUser = (props) => <option>{props.user.user_name}</option>;
-const MONTHS = [
-  "Styczeń",
-  "Luty",
-  "Marzec",
-  "Kwiecień",
-  "Maj",
-  "Czerwiec",
-  "Lipiec",
-  "Sierpień",
-  "Wrzesień",
-  "Październik",
-  "Listopad",
-  "Grudzień",
-];
+
 class CreateReport extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +21,8 @@ class CreateReport extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     this.state = {
-      report_who: this.props.user.permission === "user" ? this.props.user.name : "",
+      report_who:
+        this.props.user.permission === "user" ? this.props.user.name : "",
       report_project: "",
       report_from: "",
       report_hours: "",
@@ -65,7 +49,6 @@ class CreateReport extends Component {
       .catch(function (err) {
         console.log(err);
       });
-    console.log(this.data_who);
   }
   onChangeReportWho(e) {
     this.setState({
@@ -95,12 +78,6 @@ class CreateReport extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log("Form submitted");
-    console.log(`Report Who: ${this.state.report_who}`);
-    console.log(`Report Project: ${this.state.report_project}`);
-    console.log(`Report From: ${this.state.report_from}`);
-    console.log(`Report Status: ${this.state.report_status}`);
-    console.log(`Report Hours: ${this.state.report_hours}`);
 
     const newReport = {
       report_who: this.state.report_who,
@@ -110,14 +87,13 @@ class CreateReport extends Component {
       report_status: this.state.report_status,
     };
 
-    axios
-      .post("http://localhost:5000/reports/create", newReport)
-      .then((res) => console.log(res.data));
+    axios.post("http://localhost:5000/reports/create", newReport);
 
     this.props.history.push("/reports");
 
     this.setState({
-      report_who: this.props.user.permission === "user" ? this.props.user.name : "",
+      report_who:
+        this.props.user.permission === "user" ? this.props.user.name : "",
       report_project: "",
       report_from: "",
       report_hours: "",
@@ -186,17 +162,6 @@ class CreateReport extends Component {
                     <option value="Listopad">Listopad</option>
                     <option value="Grudzień">Grudzień</option>
                   </Form.Control>
-                  {/* <DayPickerInput
-                  formatDate={formatDate}
-                  parseDate={parseDate}
-                  format="L"
-                  value={`${formatDate(new Date(), "L", "pl")}`}
-                  dayPickerProps={{
-                    locale: "pl",
-                    localeUtils: MomentLocaleUtils,
-                  }}
-                  onChange={this.onChangeReportFrom}
-                /> */}
                 </Col>
                 <Col>
                   <Form.Label>Ilość Godzin: </Form.Label>

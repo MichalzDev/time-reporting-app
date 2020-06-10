@@ -93,12 +93,10 @@ class EditUser extends Component {
       user_permissions: this.state.user_permissions,
     };
 
-    axios
-      .post(
-        "http://localhost:5000/users/update/" + this.props.match.params.id,
-        obj
-      )
-      .then((res) => console.log(res.data));
+    axios.post(
+      "http://localhost:5000/users/update/" + this.props.match.params.id,
+      obj
+    );
 
     this.props.history.push("/users");
 

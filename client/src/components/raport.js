@@ -31,7 +31,7 @@ export default function SimpleTable({ reports, redirect }) {
         </TableHead>
         <TableBody>
           {reports.map((row, index) =>
-            row.report_status == "accepted" ? (
+            row.report_status === "accepted" ? (
               <TableRow style={{ backgroundColor: "lightgreen" }} key={index}>
                 <TableCell component="th" scope="row">
                   {row.report_who}
@@ -41,7 +41,7 @@ export default function SimpleTable({ reports, redirect }) {
                 <TableCell align="right">{row.report_hours}</TableCell>
                 <TableCell align="right"></TableCell>
               </TableRow>
-            ) : row.report_status == "rejected" ? (
+            ) : row.report_status === "rejected" ? (
               <TableRow style={{ backgroundColor: "#ffcccb" }} key={index}>
                 <TableCell component="th" scope="row">
                   {row.report_who}

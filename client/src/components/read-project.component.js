@@ -56,9 +56,7 @@ class ReadProject extends Component {
   }
 
   deleteProject(id) {
-    axios.delete("http://localhost:5000/projects/delete/" + id).then((res) => {
-      console.log(res.data);
-    });
+    axios.delete("http://localhost:5000/projects/delete/" + id);
     this.setState({
       projects: this.state.projects.filter((el) => el._id !== id),
     });
@@ -90,12 +88,9 @@ class ReadProject extends Component {
           </thead>
           <tbody>{this.projectList()}</tbody>
         </Table>
-        <Button
-                  variant="danger"
-                  onClick={() => window.location.reload()}
-                >
-                  Wyjdz
-                </Button>
+        <Button variant="danger" onClick={() => window.location.reload()}>
+          Wyjdz
+        </Button>
       </div>
     );
   }

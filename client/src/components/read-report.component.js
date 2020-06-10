@@ -50,15 +50,7 @@ class ReadReport extends Component {
         console.log(err);
       });
   }
-  // componentDidCatch() {
-  //     axios.get('http://localhost:5000/reports/')
-  //     .then(res => {
-  //         this.setState({reports: res.data})
-  //     })
-  //     .catch(function(err){
-  //         console.log(err);
-  //     })
-  // }
+
   componentDidUpdate() {
     axios
       .get("http://localhost:5000/reports/")
@@ -71,9 +63,7 @@ class ReadReport extends Component {
   }
 
   deleteReport(id) {
-    axios.delete("http://localhost:5000/reports/delete/" + id).then((res) => {
-      console.log(res.data);
-    });
+    axios.delete("http://localhost:5000/reports/delete/" + id);
     this.setState({
       reports: this.state.reports.filter((el) => el._id !== id),
     });
@@ -108,12 +98,9 @@ class ReadReport extends Component {
           </thead>
           <tbody>{this.reportList()}</tbody>
         </Table>
-        <Button
-                  variant="danger"
-                  onClick={() => window.location.reload()}
-                >
-                  Wyjdz
-                </Button>
+        <Button variant="danger" onClick={() => window.location.reload()}>
+          Wyjdz
+        </Button>
       </div>
     );
   }

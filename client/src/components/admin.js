@@ -1,25 +1,17 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
-
 import CreateUser from "./create-user.component";
 import ReadUser from "./read-user.component";
 import EditUser from "./edit-user.component";
-
 import CreateProject from "./create-project.component";
 import ReadProject from "./read-project.component";
 import EditProject from "./edit-project.component";
 import CreateReport from "./create-report.component";
-import ReadReport from "./read-report.component";
 import EditReport from "./edit-report.component";
 import Raport from "./raport";
 
@@ -43,7 +35,6 @@ class Admin extends Component {
   }
 
   render() {
-    console.log(this.state);
     return (
       <Router>
         <Container>

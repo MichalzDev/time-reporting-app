@@ -63,13 +63,6 @@ class CreateUser extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log("Form submitted");
-    console.log(`User Login: ${this.state.user_login}`);
-    console.log(`User Password: ${this.state.user_password}`);
-    console.log(`User Name: ${this.state.user_name}`);
-    console.log(`User Role: ${this.state.user_role}`);
-    console.log(`User Projects: ${this.state.user_projects}`);
-    console.log(`User Permissions: ${this.state.user_permissions}`);
 
     const newUser = {
       user_login: this.state.user_login,
@@ -80,9 +73,7 @@ class CreateUser extends Component {
       user_permissions: this.state.user_permissions,
     };
 
-    axios
-      .post("http://localhost:5000/users/create", newUser)
-      .then((res) => console.log(res.data));
+    axios.post("http://localhost:5000/users/create", newUser);
 
     this.props.history.push("/users");
 

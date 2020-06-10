@@ -51,12 +51,10 @@ class EditProject extends Component {
       project_members: this.state.project_members,
     };
 
-    axios
-      .post(
-        "http://localhost:5000/projects/update/" + this.props.match.params.id,
-        obj
-      )
-      .then((res) => console.log(res.data));
+    axios.post(
+      "http://localhost:5000/projects/update/" + this.props.match.params.id,
+      obj
+    );
 
     this.props.history.push("/projects");
 

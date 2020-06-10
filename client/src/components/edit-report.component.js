@@ -4,29 +4,11 @@ import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
-import DayPickerInput from "react-day-picker/DayPickerInput";
-import "react-day-picker/lib/style.css";
-import MomentLocaleUtils, {
-  formatDate,
-  parseDate,
-} from "react-day-picker/moment";
 import "moment/locale/pl";
+
 const OptionProject = (props) => <option>{props.project.project_name}</option>;
 const OptionUser = (props) => <option>{props.user.user_name}</option>;
-const MONTHS = [
-  "Styczeń",
-  "Luty",
-  "Marzec",
-  "Kwiecień",
-  "Maj",
-  "Czerwiec",
-  "Lipiec",
-  "Sierpień",
-  "Wrzesień",
-  "Październik",
-  "Listopad",
-  "Grudzień",
-];
+
 class EditReport extends Component {
   _isMounted = false;
   constructor(props) {
@@ -80,9 +62,6 @@ class EditReport extends Component {
       .catch(function (err) {
         console.log(err);
       });
-    console.log(this.data_who);
-
-    console.log(this.data_project);
   }
 
   onChangeReportWho(e) {
@@ -113,12 +92,6 @@ class EditReport extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log("Form submitted");
-    console.log(`Report Who: ${this.state.report_who}`);
-    console.log(`Report Project: ${this.state.report_project}`);
-    console.log(`Report From: ${this.state.report_from}`);
-    console.log(`Report Hours: ${this.state.report_hours}`);
-    console.log(`Report Status: ${this.state.report_status}`);
 
     const obj = {
       report_who: this.state.report_who,
@@ -128,9 +101,10 @@ class EditReport extends Component {
       report_status: this.state.report_status,
     };
 
-    axios
-      .post("http://localhost:5000/reports/edit/" + this.props.reportId, obj)
-      .then((res) => console.log(res.data));
+    axios.post(
+      "http://localhost:5000/reports/edit/" + this.props.reportId,
+      obj
+    );
 
     this.props.history.push("/reports");
 

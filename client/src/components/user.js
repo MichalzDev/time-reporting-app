@@ -1,27 +1,10 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Button from "react-bootstrap/Button";
-
-import CreateUser from "./create-user.component";
-import ReadUser from "./read-user.component";
-import EditUser from "./edit-user.component";
-
-import CreateProject from "./create-project.component";
-import ReadProject from "./read-project.component";
-import EditProject from "./edit-project.component";
-import CreateReport from "./create-report.component";
-import ReadReport from "./read-report.component";
-import EditReport from "./edit-report.component";
 import Raport from "./raport";
 
 class User extends Component {
@@ -57,7 +40,9 @@ class User extends Component {
               <Button
                 variant="secondary"
                 className="m-2"
-                onClick={() => this.props.redirect('/reports/create/' + this.props.user.name)}
+                onClick={() =>
+                  this.props.redirect("/reports/create/" + this.props.user.name)
+                }
               >
                 Utwórz raport
               </Button>
@@ -74,17 +59,10 @@ class User extends Component {
               </Button>
             </Navbar.Collapse>
           </Navbar>
-          {/* <Route path="/users/" exact component={ReadUser} />
-          <Route path="/users/create" exact component={CreateUser} />
-          <Route path="/users/edit/:id" exact component={EditUser} />
-          <Route path="/projects" exact component={ReadProject} />
-          <Route path="/projects/create" exact component={CreateProject} />
-          <Route path="/projects/edit/:id" exact component={EditProject} />
-          <Route path="/reports" exact component={ReadReport} />
-          <Route path="/reports/create" exact component={CreateReport} />
-          <Route path="/reports/edit/:id" exact component={EditReport} /> */}
-          <h3 style={{textAlign: 'center'}} className="mt-3 mb-3">Raporty {this.props.user.name}</h3>
-          <Raport reports={this.state.reports} redirect={this.props.redirect}/>
+          <h3 style={{ textAlign: "center" }} className="mt-3 mb-3">
+            Raporty {this.props.user.name}
+          </h3>
+          <Raport reports={this.state.reports} redirect={this.props.redirect} />
         </Container>
       </Router>
     );

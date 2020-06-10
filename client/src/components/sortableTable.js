@@ -3,7 +3,6 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import PictureAsPdfIcon from "@material-ui/icons/PictureAsPdf";
 import "bootstrap/dist/css/bootstrap.min.css";
 import jsPDF from "jspdf";
 import "jspdf-autotable";

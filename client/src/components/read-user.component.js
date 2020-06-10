@@ -6,11 +6,9 @@ import Button from "react-bootstrap/Button";
 
 const User = (props) => (
   <tr>
-    {/* <td>{props.user._id}</td> */}
     <td>{props.user.user_login}</td>
     <td>{props.user.user_name}</td>
     <td>{props.user.user_role}</td>
-    {/* <td>{props.user.user_projects}</td> */}
     <td>{props.user.user_permissions}</td>
     <td>
       <Link to={"/users/edit/" + props.user._id}>Edytuj </Link>
@@ -47,15 +45,7 @@ class ReadUser extends Component {
         console.log(err);
       });
   }
-  // componentDidCatch() {
-  //     axios.get('http://localhost:5000/users/')
-  //     .then(res => {
-  //         this.setState({users: res.data})
-  //     })
-  //     .catch(function(err){
-  //         console.log(err);
-  //     })
-  // }
+
   componentDidUpdate() {
     axios
       .get("http://localhost:5000/users/")
@@ -68,9 +58,7 @@ class ReadUser extends Component {
   }
 
   deleteUser(id) {
-    axios.delete("http://localhost:5000/users/delete/" + id).then((res) => {
-      console.log(res.data);
-    });
+    axios.delete("http://localhost:5000/users/delete/" + id);
     this.setState({
       users: this.state.users.filter((el) => el._id !== id),
     });
@@ -89,23 +77,18 @@ class ReadUser extends Component {
         <Table striped bordered hover style={{ marginTop: 20 }}>
           <thead>
             <tr>
-              {/* <th>id</th> */}
               <th>Login</th>
               <th>Imię</th>
               <th>Rola</th>
-              {/* <th>Projects</th> */}
               <th>Uprawnienia</th>
               <th>Akcje</th>
             </tr>
           </thead>
           <tbody>{this.userList()}</tbody>
         </Table>
-        <Button
-                  variant="danger"
-                  onClick={() => window.location.reload()}
-                >
-                  Wyjdz
-                </Button>
+        <Button variant="danger" onClick={() => window.location.reload()}>
+          Wyjdz
+        </Button>
       </div>
     );
   }

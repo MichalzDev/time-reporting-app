@@ -1,25 +1,12 @@
 import React, { Component } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import Navbar from "react-bootstrap/Navbar";
-import NavDropdown from "react-bootstrap/NavDropdown";
 import "bootstrap/dist/css/bootstrap.min.css";
-
 import SignIn from "./components/signin";
-import CreateUser from "./components/create-user.component";
-import ReadUser from "./components/read-user.component";
-import EditUser from "./components/edit-user.component";
-
 import CreateProject from "./components/create-project.component";
 import ReadProject from "./components/read-project.component";
 import EditProject from "./components/edit-project.component";
 import CreateReport from "./components/create-report.component";
-import ReadReport from "./components/read-report.component";
 import EditReport from "./components/edit-report.component";
 import Admin from "./components/admin";
 import User from "./components/user";
@@ -92,7 +79,6 @@ class App extends Component {
 
   render() {
     if (this.state.redirect) {
-      console.log(this.state);
       return (
         <Router>
           <Redirect to={this.state.redirect} />
@@ -140,36 +126,6 @@ class App extends Component {
     return (
       <Router>
         <Container>
-          {/* <Navbar bg="light" expand="lg">
-            <Navbar.Brand href="/">Control panel</Navbar.Brand>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <NavDropdown title="Users" id="basic-nav-dropdown">
-                <NavDropdown.Item>
-                  <Link to="/users">Lista Użytkowników</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/users/create">Utwórz Użytkownika</Link>
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Projects" id="basic-nav-dropdown">
-                <NavDropdown.Item>
-                  <Link to="/projects">Lista Projektów</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/projects/create">Utwórz Projekt</Link>
-                </NavDropdown.Item>
-              </NavDropdown>
-              <NavDropdown title="Reports" id="basic-nav-dropdown">
-                <NavDropdown.Item>
-                  <Link to="/reports">Lista Raportów</Link>
-                </NavDropdown.Item>
-                <NavDropdown.Item>
-                  <Link to="/reports/create">Utwórz Raport</Link>
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Navbar.Collapse>
-          </Navbar> */}
           <Route
             path="/"
             render={(props) => (
